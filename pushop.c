@@ -8,7 +8,7 @@ void pa(t_node **a, t_node **b)
     *a = (*a)->next; //a'nın 2.
     temp->next = *b; //head'i b ye bagladım
     *b = temp;
-    printf("pa");
+    printf("pa\n");
 }
 void pb(t_node **b, t_node **a)
 {
@@ -18,5 +18,5 @@ void pb(t_node **b, t_node **a)
     *b = (*b)->next; //a'nın 2.
     temp->next = *a; //head'i b ye bagladım
     *a = temp;
-    printf("pb");
+    printf("pb\n");
 }

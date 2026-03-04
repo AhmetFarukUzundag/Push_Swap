@@ -17,16 +17,16 @@ void swap(t_node **stack)
 void sa(t_node **a)
 {
     swap(a);
-    printf("sa");
+    printf("sa\n");
 }
 void sb(t_node **b)
 {
     swap(b);
-    printf("sb");
+    printf("sb\n");
 }
 void ss(t_node **a, t_node **b)
 {
     swap(a);
     swap(b);
-    printf("ss");
+    printf("ss\n");
 }

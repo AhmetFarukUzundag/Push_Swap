@@ -15,6 +15,7 @@ void ra(t_node **a)
     last->next = first;
     first->next = NULL;
     // head -> son
+    printf("ra\n");
 }
 
 void rb(t_node **b) 
@@ -31,4 +32,12 @@ void rb(t_node **b)
     last->next = first;
     first->next = NULL;
     // head -> son
+    printf("rb\n");
+}
+
+void rr(t_node **a, t_node **b)
+{
+    ra(a);
+    rb(b);
+    printf("rr\n");
 }
