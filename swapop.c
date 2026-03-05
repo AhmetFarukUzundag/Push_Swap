@@ -1,32 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swapop.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
+/*   Updated: 2026/03/05 11:51:52 by auzundag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push-swap.h"
 
-void swap(t_node **stack)
+void	swap(t_node **stack)
 {
-    t_node *first;
-    t_node *second;
+	t_node	*first;
+	t_node	*second;
 
-    if(!*stack || !(*stack)->next)
-        return ;
-    first = *stack;
-    second = first->next; // 2
-
-    first->next = second->next; // 3
-    second->next = first; // 3->1
-    *stack = second; // 1 -> 2
+	if (!*stack || !(*stack)->next)
+		return ;
+	first = *stack;             // 1
+	second = first->next;       // 2
+	first->next = second->next; // 2->3
+	second->next = first;       // 3->1
+	*stack = second;            //
 }
-void sa(t_node **a)
+void	sa(t_node **a)
 {
-    swap(a);
-    printf("sa\n");
+	swap(a);
+	write(1, "sa\n", 3);
 }
-void sb(t_node **b)
+void	sb(t_node **b)
 {
-    swap(b);
-    printf("sb\n");
+	swap(b);
+	write(1, "sb\n", 3);
 }
-void ss(t_node **a, t_node **b)
+void	ss(t_node **a, t_node **b)
 {
-    swap(a);
-    swap(b);
-    printf("ss\n");
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
+}
+void	pa(t_node **a, t_node **b)
+{
+	swap(a);
+	swap(b);
+	write(1, "pa\n", 3);
 }
