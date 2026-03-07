@@ -6,29 +6,32 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/07 16:04:19 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:36:28 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push-swap.h"
 
-void	rra(t_node **a)
+void    rra(t_node **a)
 {
-	t_node	*last;
-	t_node	*prev;
+    t_node  *last;
+    t_node  *temp;
 
-	if (!a || !*a || !(*a)->next)
-		return ;
-	prev = NULL;
-	last = *a;
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-	prev->next = NULL;
-	last->next = *a;
-	write(1, "rra\n", 3);
+    if (!a || !*a || !(*a)->next)
+        return;
+
+    temp = *a;
+
+    while (temp->next->next)
+        temp = temp->next;
+
+    last = temp->next;
+    temp->next = NULL;
+
+    last->next = *a;
+    *a = last;
+
+    write(1, "rra\n", 3);
 }
 void    rrb(t_node **b)
 {
