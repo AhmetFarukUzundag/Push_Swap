@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverserotateop.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/05 11:52:09 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:04:19 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,26 @@ void	rra(t_node **a)
 	last->next = *a;
 	write(1, "rra\n", 3);
 }
-void	rrb(t_node **b)
+void    rrb(t_node **b)
 {
-	t_node	*last;
-	t_node	*prev;
+    t_node  *last;
+    t_node  *temp;
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	prev = NULL;
-	last = *b;
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-	prev->next = NULL;
-	last->next = *b;
-	write(1, "rrb\n", 3);
+    if (!b || !*b || !(*b)->next)
+        return;
+
+    temp = *b;
+
+    while (temp->next->next)
+        temp = temp->next;
+
+    last = temp->next;
+    temp->next = NULL;
+
+    last->next = *b;
+    *b = last;
+
+    write(1, "rrb\n", 3);
 }
 
 void	rrr(t_node **a, t_node **b)
