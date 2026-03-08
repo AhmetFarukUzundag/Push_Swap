@@ -12,6 +12,7 @@
 
 #include "push-swap.h"
 
+// head en sona gider
 void	ra(t_node **a)
 {
 	t_node	*first;
