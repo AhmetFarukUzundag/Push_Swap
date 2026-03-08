@@ -13,44 +13,56 @@
 #include "push-swap.h"
 
 // Son node başa gelir.
-void	rra(t_node **a)
+void    rra(t_node **a)
 {
-    t_node  *last;
-    t_node  *prev;
+    t_node *current;
+    t_node *last;
+    t_node *prev;
 
-	if (!a || !*a || !(*a)->next)
-		return ;
-	prev = NULL;
-	last = *a; // head
-	while (last->next) 
-	{
-		prev = last; // 3
-		last = last->next; // 4
-	}
-	prev->next = NULL; // 3 -> NULL
-	last->next = *a;	// 4 -> 1
-	*a = last;
-	write(1, "rra\n", 3);
+    if (!a || !*a || !(*a)->next)
+        return;
+
+    current = *a;
+    prev = NULL;
+
+    while (current->next)
+    {
+        if (!current->next->next)
+            prev = current;
+        last = current->next;
+        current = current->next;
+    }
+
+    prev->next = NULL;
+    last->next = *a;
+    *a = last;
+    write(1, "rra\n", 3);
 }
 
-void	rrb(t_node **b)
+void    rra(t_node **b)
 {
-    t_node  *last;
-    t_node  *prev;
+    t_node *current;
+    t_node *last;
+    t_node *prev;
 
-	if (!b || !*b || !(*b)->next)
-		return ;
-	prev = NULL;
-	last = *b;
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-	prev->next = NULL;
-	last->next = *b;
-	*b = last;
-	write(1, "rrb\n", 3);
+    if (!b || !*b || !(*b)->next)
+        return;
+
+    current = *b;
+    prev = NULL;
+
+    while (current->next)
+    {
+        if (!current->next->next)
+            prev = current;
+        last = current->next;
+        current = current->next;
+    }
+
+    prev->next = NULL;
+    last->next = *b;
+    *b = last;
+    write(1, "rra\n", 3);
 }
 
 void	rrr(t_node **a, t_node **b)
