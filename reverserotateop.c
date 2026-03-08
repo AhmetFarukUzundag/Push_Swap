@@ -67,7 +67,7 @@ void    rra(t_node **b)
 
 void	rrr(t_node **a, t_node **b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
+	rra(a);
+	rrb(b);
 	write(1, "rrr\n", 3);
 }
