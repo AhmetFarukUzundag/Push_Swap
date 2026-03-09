@@ -19,31 +19,36 @@ void	swap(t_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	first = *stack;             // 1
-	second = first->next;       // 2
-	first->next = second->next; // 2->3
-	second->next = first;       // 3->1
-	*stack = second;            //
+	first = *stack;             
+	second = first->next;        
+	first->next = second->next;  
+	second->next = first;        
+	*stack = second;            
 }
+
 void	sa(t_node **a)
 {
 	swap(a);
 	write(1, "sa\n", 3);
 }
+
 void	sb(t_node **b)
 {
 	swap(b);
 	write(1, "sb\n", 3);
 }
+
 void	ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
 	write(1, "ss\n", 3);
 }
+
 void	pa(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
 	write(1, "pa\n", 3);
 }
+ 

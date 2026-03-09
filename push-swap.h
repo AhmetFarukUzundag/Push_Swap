@@ -18,4 +18,5 @@ void				pb(t_node **b, t_node **a);
 void				ra(t_node **a);
 void				rb(t_node **b);
 void				rr(t_node **a, t_node **b);
+
 #endif

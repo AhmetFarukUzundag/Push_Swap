@@ -1,8 +1,9 @@
 typedef struct s_node
 {
-	int			data;
-	struct push	*next;
-}				t_node;
+	int 			data;
+	struct s_node 	*next;
+} t_node;
+
 
 // int stack[100];
 // int top = -1;
@@ -18,7 +19,7 @@ typedef struct s_node
 #include <stdio.h>
 #include <stdlib.h>
 
-int	main(int argc, char **argv)
+int main(void)
 {
 	t_node *top = NULL;
 	top->data = 42;

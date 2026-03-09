@@ -23,6 +23,7 @@ void	pa(t_node **a, t_node **b, int print_on)
 	if (print_on)
 		write(1, "pa\n", 3);
 }
+
 void	pb(t_node **b, t_node **a)
 {
 	t_node	*temp;
@@ -33,3 +34,4 @@ void	pb(t_node **b, t_node **a)
 	*a = temp;
 	write(1, "pb\n", 3);
 }
+			
