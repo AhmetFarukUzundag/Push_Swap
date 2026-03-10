@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:47:07 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	pa(t_stack **a, t_stack **b, int print_on)
 {
 	t_stack	*temp;
 
-	if (!*b)
+	if (!*b || !*a)
 		return ;
 	temp = *b;
 	*b = (*b)->next;
