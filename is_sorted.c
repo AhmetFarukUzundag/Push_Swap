@@ -6,13 +6,13 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 16:06:41 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/10 08:47:16 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push-swap.h"
+#include "push_swap.h"
 
-int	is_sorted(t_node *a)
+int	is_sorted(t_stack *a)
 {
 	while (a && a->next)
 	{

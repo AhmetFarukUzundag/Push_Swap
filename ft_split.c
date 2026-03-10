@@ -6,11 +6,11 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 12:45:44 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 08:47:24 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push-swap.h"
+#include "push_swap.h"
 
 static int	count_words(char const *s, char delimiter)
 {

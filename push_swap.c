@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushop.c                                           :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
+/*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
+/*   Updated: 2026/03/10 08:59:47 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	pb(t_stack **a, t_stack **b, int print_on)
+int main(int argc, char **argv)
 {
-	t_stack	*temp;
-
-	if (!*a)
-		return ;
-	temp = *a;
-	*a = (*a)->next;
-	temp->next = *b;
-	*b = temp;
-	if (print_on)
-		write(1, "pb\n", 3);
+	
 }
 
-void	pa(t_stack **a, t_stack **b, int print_on)
-{
-	t_stack	*temp;
+// argc = 4
 
-	if (!*b)
-		return ;
-	temp = *b;
-	*b = (*b)->next;
-	temp->next = *a;
-	*a = temp;
-	if (print_on)
-		write(1, "pa\n", 3);
-}
+// argv[0] = "./push_swap"
+// argv[1] = "3"
+// argv[2] = "2"
+// argv[3] = "1"

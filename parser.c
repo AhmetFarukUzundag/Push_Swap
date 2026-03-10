@@ -6,10 +6,11 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 11:27:04 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 08:47:59 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 08:55:24 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*parser_arguments(int argc, char **argv, int size)
 {
+	
 }

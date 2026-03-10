@@ -6,17 +6,17 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:18 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 08:46:25 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 09:12:16 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push-swap.h"
+#include "push_swap.h"
 
 // head en sona gider
-void	ra(t_node **a)
+void	ra(t_stack **a)
 {
-	t_node	*first;
-	t_node	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	first = *a;
 	*a = first->next;
@@ -29,10 +29,10 @@ void	ra(t_node **a)
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b)
+void	rb(t_stack **b)
 {
-	t_node	*first;
-	t_node	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	first = *b;
 	*b = first->next;
@@ -45,7 +45,7 @@ void	rb(t_node **b)
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);
