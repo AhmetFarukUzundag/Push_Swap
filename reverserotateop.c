@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:15:58 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	rra(t_stack **a)
 	write(1, "rra\n", 4);
 }
 
-void	rra(t_stack **b)
+void	rrb(t_stack **b)
 {
 	t_stack	*current;
 	t_stack	*last;

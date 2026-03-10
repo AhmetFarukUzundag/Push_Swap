@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 09:12:08 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 09:30:41 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	swap(t_stack **stack)
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
-	*stack = second;
+	*stack = second;	
 }
 
 void	sa(t_stack **a)
