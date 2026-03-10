@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/05 11:51:52 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/10 08:48:02 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	swap(t_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	first = *stack;             
-	second = first->next;        
-	first->next = second->next;  
-	second->next = first;        
-	*stack = second;            
+	first = *stack;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
 }
 
 void	sa(t_node **a)
@@ -51,4 +51,3 @@ void	pa(t_node **a, t_node **b)
 	swap(b);
 	write(1, "pa\n", 3);
 }
- 
