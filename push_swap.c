@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 12:30:12 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:15:15 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@
 
 static int	isNumber(char *str)
 {
+	int	i;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	while (str[i])
+	{
+		if ((str[i] == '-' || str[i] == '+')) // -123
+		{
+			if (flag)
+				return (1);
+			flag = 1;
+			i++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 static int	parseNumber(char *token)
@@ -39,8 +56,6 @@ int	main(int argc, char **argv)
 	int		j;
 	char	**tokens;
 
-	if (!argv)
-		write(1, "error\n", 6);
 	if (argc < 2)
 		return (0);
 	i = 1;
@@ -52,6 +67,10 @@ int	main(int argc, char **argv)
 		{
 			parseNumber(tokens[j]);
 			j++;
+			// validate
+			// convert
+			// duplicate check
+			// push stack
 		}
 		i++;
 	}
@@ -64,12 +83,23 @@ int	main(int argc, char **argv)
 // argv[2] = "2"
 // argv[3] = "1"
 
-// edge caseler
-// 4a2
-// --42
-// ++42
-// ""
-// 3 2 1 3 (duplicate)
+// Edge Caseler
+
+// boş input
+// ./push_swap ""
+// sadece boşluk
+// ./push_swap "     "
+// invalid karakter
+// ./push_swap 1 2 a
+// mixed
+// ./push_swap 1 "2 a"
+// duplicate
+// ./push_swap 1 2 2
+// int overflow
+// ./push_swap 999999999999999
+// sign hatası
+// ./push_swap --
+// ./push_swap +-
 
 // push_swap programı. Programınız çalışma zamanında bir strateji seçebilmelidir
 // Giriş yapılandırması üzerinde

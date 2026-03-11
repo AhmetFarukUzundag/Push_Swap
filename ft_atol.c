@@ -6,18 +6,20 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:05:08 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/10 13:27:49 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:21:22 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atol(const char *str)
+#include "push_swap.h"
+
+long	ft_atol(const char *str, int *error)
 {
 	int		i;
-	long	sum;
+	long	num;
 	int		sign;
 
 	i = 0;
-	sum = 0;
+	num = 0;
 	sign = 1;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
@@ -27,12 +29,14 @@ long	ft_atol(const char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	if (!ft_isdigit(str[i]))
+		*error = 1;
+	while (ft_isdigit(str[i]) && !*error)
 	{
-		sum = (sum * 10) + (str[i] - '0');
+		num = (num * 10) + (str[i] - '0');
 		i++;
+		if (num > INT_MAX)
+			*error = 1;
 	}
-	if (sum * sign > 2147483647 || sum * sign < -2147483648)
-		return ((long)2147483648);
-	return ((long)(sign * sum));
+	return ((int)(num * sign));
 }
