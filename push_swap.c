@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 14:08:08 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 15:26:30 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static int	checkDup(t_stack *stack_a, int value)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	int		i;
 	char	**tokens;
+	int		i;
 	int		value;
 	int		error;
 
@@ -69,12 +69,12 @@ int	main(int argc, char **argv)
 	{
 		tokens = ft_split(argv[i++], ' ');
 		if (!tokens || !*tokens)
-			write(1, "error\n", 6);
+			return (write(1, "error\n", 6), 0);
 		while (*tokens)
 		{
 			value = ft_atol(*tokens, &error);
 			if (error || checkDup(a, value))
-				return (0);
+				return (write(1, "error\n", 6), 0);
 			addStack(&a, newNode(value));
 			tokens++;
 		}

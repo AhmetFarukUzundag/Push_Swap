@@ -6,11 +6,19 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:05:08 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 13:32:12 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 15:12:00 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
 
 long	ft_atol(const char *str, int *error)
 {
