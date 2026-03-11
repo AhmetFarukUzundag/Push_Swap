@@ -1,7 +1,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -24,5 +23,6 @@ void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 int					is_sorted(t_stack *a);
 char				**ft_split(char const *s, char c);
+long				ft_atol(const char *str, int *error);
 
 #endif

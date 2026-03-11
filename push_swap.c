@@ -6,71 +6,77 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 13:15:15 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:50:19 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-// static t_stack	*newNode(int data)
-// {
-// 	t_stack	*node;
-
-// 	node = malloc(sizeof(t_stack));
-// 	if (!node)
-// 		return (NULL);
-// 	node->data = data;
-// 	node->next = NULL;
-// 	return (node);
-// }
-
-static int	isNumber(char *str)
+static t_stack	*newNode(int data)
 {
-	int	i;
-	int	flag;
+	t_stack	*node;
 
-	i = 0;
-	flag = 0;
-	while (str[i])
-	{
-		if ((str[i] == '-' || str[i] == '+')) // -123
-		{
-			if (flag)
-				return (1);
-			flag = 1;
-			i++;
-		}
-		i++;
-	}
-	return (0);
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
 }
 
-static int	parseNumber(char *token)
+void	addStack(t_stack **lst, t_stack *new)
 {
+	t_stack	*last;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = new;
+}
+
+static int	checkDup(t_stack *stack_a, int value)
+{
+	t_stack	*tmp;
+
+	tmp = stack_a;
+	while (tmp)
+	{
+		if (tmp->data == value)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	int		i;
-	int		j;
 	char	**tokens;
+	long	value;
+	int		error;
+	t_stack	*a;
 
+	a = NULL;
+	error = 0;
 	if (argc < 2)
 		return (0);
 	i = 1;
 	while (i < argc)
 	{
 		tokens = ft_split(argv[i++], ' ');
-		j = 0;
-		while (tokens[j])
+		while (*tokens)
 		{
-			parseNumber(tokens[j]);
-			j++;
-			// validate
-			// convert
-			// duplicate check
-			// push stack
+			value = ft_atol(*tokens, &error);
+			if (error || checkDup(a, (int)value))
+				return (1);
+			addStack(&a, newNode((int)value));
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:05:08 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 13:21:22 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:32:12 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	ft_atol(const char *str, int *error)
 	{
 		num = (num * 10) + (str[i] - '0');
 		i++;
-		if (num > INT_MAX)
+		if (num > 2147483647)
 			*error = 1;
 	}
 	return ((int)(num * sign));
