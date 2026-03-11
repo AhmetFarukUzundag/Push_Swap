@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 13:50:19 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/11 14:08:08 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,22 @@ void	addStack(t_stack **lst, t_stack *new)
 
 static int	checkDup(t_stack *stack_a, int value)
 {
-	t_stack	*tmp;
-
-	tmp = stack_a;
-	while (tmp)
+	while (stack_a)
 	{
-		if (tmp->data == value)
+		if (stack_a->data == value)
 			return (1);
-		tmp = tmp->next;
+		stack_a = stack_a->next;
 	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
+	t_stack	*a;
 	int		i;
 	char	**tokens;
-	long	value;
+	int		value;
 	int		error;
-	t_stack	*a;
 
 	a = NULL;
 	error = 0;
@@ -71,14 +68,16 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		tokens = ft_split(argv[i++], ' ');
+		if (!tokens || !*tokens)
+			write(1, "error\n", 6);
 		while (*tokens)
 		{
 			value = ft_atol(*tokens, &error);
-			if (error || checkDup(a, (int)value))
-				return (1);
-			addStack(&a, newNode((int)value));
+			if (error || checkDup(a, value))
+				return (0);
+			addStack(&a, newNode(value));
+			tokens++;
 		}
-		i++;
 	}
 }
 
