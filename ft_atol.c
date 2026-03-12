@@ -29,6 +29,7 @@ long	ft_atol(const char *str, int *error)
 	i = 0;
 	num = 0;
 	sign = 1;
+	*error = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -38,13 +39,21 @@ long	ft_atol(const char *str, int *error)
 		i++;
 	}
 	if (!ft_isdigit(str[i]))
+	{
 		*error = 1;
+		return (0);
+	}
 	while (ft_isdigit(str[i]) && !*error)
 	{
 		num = (num * 10) + (str[i] - '0');
 		i++;
-		if (num > 2147483647 || num < -2147483648)
-			*error = 1;
 	}
+	if ((sign == 1 && num > 2147483647L)
+		|| (sign == -1 && num > 2147483648L))
+		*error = 1;
+	if (str[i] != '\0')
+		*error = 1;
+	if (*error)
+		return (0);
 	return (num * sign);
 }

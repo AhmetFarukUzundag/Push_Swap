@@ -52,9 +52,27 @@ static int checkDup(t_stack *stack_a, int value)
 	return (0);
 }
 
+static void freeStack(t_stack **stack)
+{
+	t_stack *tmp;
+
+	if (!stack)
+		return;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+}
+
 static void freeTokens(char **tokens)
 {
-	int i = 0;
+	int i;
+
+	if (!tokens)
+		return;
+	i = 0;
 	while (tokens[i])
 	{
 		free(tokens[i]);
@@ -67,10 +85,11 @@ int main(int argc, char **argv)
 {
 	t_stack *a;
 	char **tokens;
+	char **cur;
 	int i;
 	int value;
 	int error;
-
+	
 	a = NULL;
 	error = 0;
 	if (argc < 2)
@@ -80,16 +99,30 @@ int main(int argc, char **argv)
 	{
 		tokens = ft_split(argv[i++], ' ');
 		if (!tokens || !*tokens)
-			return (write(1, "error\n", 6), freeTokens(tokens), 0);
-		while (*tokens)
 		{
-			value = ft_atol(*tokens, &error);
-			if (error || checkDup(a, value))
-				return (write(1, "error\n", 6), freeTokens(tokens), 0);
-			addStack(&a, newNode(value));
-			tokens++;
+			freeTokens(tokens);
+			freeStack(&a);
+			write(1, "error\n", 6);
+			return (0);
 		}
+		cur = tokens;
+		while (*cur)
+		{
+			value = ft_atol(*cur, &error);
+			if (error || checkDup(a, value))
+			{
+				freeTokens(tokens);
+				freeStack(&a);
+				write(1, "error\n", 6);
+				return (0);
+			}
+			addStack(&a, newNode(value));
+			cur++;
+		}
+		freeTokens(tokens);
 	}
+	// freeStack(&a); En son a üzerindeki işlemler bitince free yapılacak
+	return (0);
 }
 
 // argc = 4
