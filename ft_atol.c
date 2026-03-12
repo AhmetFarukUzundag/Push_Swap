@@ -43,8 +43,8 @@ long	ft_atol(const char *str, int *error)
 	{
 		num = (num * 10) + (str[i] - '0');
 		i++;
-		if (num > 2147483647)
+		if (num > 2147483647 || num < -2147483648)
 			*error = 1;
 	}
-	return ((int)(num * sign));
+	return (num * sign);
 }

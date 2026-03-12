@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static t_stack	*newNode(int data)
+static t_stack *newNode(int data)
 {
-	t_stack	*node;
+	t_stack *node;
 
 	node = malloc(sizeof(t_stack));
 	if (!node)
@@ -24,16 +24,16 @@ static t_stack	*newNode(int data)
 	return (node);
 }
 
-void	addStack(t_stack **lst, t_stack *new)
+static void addStack(t_stack **lst, t_stack *new)
 {
-	t_stack	*last;
+	t_stack *last;
 
 	if (!lst || !new)
-		return ;
+		return;
 	if (*lst == NULL)
 	{
 		*lst = new;
-		return ;
+		return;
 	}
 	last = *lst;
 	while (last->next)
@@ -41,7 +41,7 @@ void	addStack(t_stack **lst, t_stack *new)
 	last->next = new;
 }
 
-static int	checkDup(t_stack *stack_a, int value)
+static int checkDup(t_stack *stack_a, int value)
 {
 	while (stack_a)
 	{
@@ -52,13 +52,24 @@ static int	checkDup(t_stack *stack_a, int value)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+static void freeTokens(char **tokens)
 {
-	t_stack	*a;
-	char	**tokens;
-	int		i;
-	int		value;
-	int		error;
+	int i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
+
+int main(int argc, char **argv)
+{
+	t_stack *a;
+	char **tokens;
+	int i;
+	int value;
+	int error;
 
 	a = NULL;
 	error = 0;
@@ -69,12 +80,12 @@ int	main(int argc, char **argv)
 	{
 		tokens = ft_split(argv[i++], ' ');
 		if (!tokens || !*tokens)
-			return (write(1, "error\n", 6), 0);
+			return (write(1, "error\n", 6), freeTokens(tokens), 0);
 		while (*tokens)
 		{
 			value = ft_atol(*tokens, &error);
 			if (error || checkDup(a, value))
-				return (write(1, "error\n", 6), 0);
+				return (write(1, "error\n", 6), freeTokens(tokens), 0);
 			addStack(&a, newNode(value));
 			tokens++;
 		}
