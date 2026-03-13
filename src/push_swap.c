@@ -28,7 +28,8 @@ static int run_push_swap(int argc, char **argv)
 		return (0); // hata durumunda 0 return eder
 	if (is_sorted(a)) // stack sıralıysa programı sonlandırır
 		return (free_stack(&a), 0);
-	
+	// if (compute_disorder(a))
+
 	
 
 
