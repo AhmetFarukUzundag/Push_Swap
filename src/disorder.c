@@ -11,18 +11,32 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+    
 double compute_disorder(t_stack *a)
 {
-    
-}
+    t_stack *i;
+    t_stack *j;
+    double mistakes = 0;
+    double total_pairs = 0;
 
-// function compute_disorder(stack a):
-// mistakes = 0
-// total_pairs = 0
-// for i from 0 to size(a)-1:
-// for j from i+1 to size(a)-1:
-// total_pairs += 1
-// if a[i] > a[j]:
-// mistakes += 1
-// return mistakes / total_pairs
+    if (!a || a->next)
+        return (0.0);
+
+    i = a;
+    while (i)
+    {
+        j = i->next;
+        while (j)
+        {
+            total_pairs++;
+
+            if (i->data > j->data)
+                mistakes++;
+
+            j = j->next;
+        }
+        i = i->next;
+    }
+
+    return (mistakes / total_pairs);
+}
