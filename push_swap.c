@@ -12,117 +12,21 @@
 
 #include "push_swap.h"
 
-static t_stack *newNode(int data)
+static int run_push_swap(int argc, char **argv)
 {
-	t_stack *node;
+	t_stack *a;
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		return (NULL);
-	node->data = data;
-	node->next = NULL;
-	return (node);
-}
-
-static void addStack(t_stack **lst, t_stack *new)
-{
-	t_stack *last;
-
-	if (!lst || !new)
-		return;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return;
-	}
-	last = *lst;
-	while (last->next)
-		last = last->next;
-	last->next = new;
-}
-
-static int checkDup(t_stack *stack_a, int value)
-{
-	while (stack_a)
-	{
-		if (stack_a->data == value)
-			return (1);
-		stack_a = stack_a->next;
-	}
+	if (argc < 2)
+		return (0);
+	if (parser_arguments(argc, argv, &a))
+		return (1);
+	free_stack(&a);
 	return (0);
-}
-
-static void freeStack(t_stack **stack)
-{
-	t_stack *tmp;
-
-	if (!stack)
-		return;
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
-}
-
-static void freeTokens(char **tokens)
-{
-	int i;
-
-	if (!tokens)
-		return;
-	i = 0;
-	while (tokens[i])
-	{
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
 }
 
 int main(int argc, char **argv)
 {
-	t_stack *a;
-	char **tokens;
-	char **cur;
-	int i;
-	int value;
-	int error;
-	
-	a = NULL;
-	error = 0;
-	if (argc < 2)
-		return (0);
-	i = 1;
-	while (i < argc)
-	{
-		tokens = ft_split(argv[i++], ' ');
-		if (!tokens || !*tokens)
-		{
-			freeTokens(tokens);
-			freeStack(&a);
-			write(1, "error\n", 6);
-			return (0);
-		}
-		cur = tokens;
-		while (*cur)
-		{
-			value = ft_atol(*cur, &error);
-			if (error || checkDup(a, value))
-			{
-				freeTokens(tokens);
-				freeStack(&a);
-				write(1, "error\n", 6);
-				return (0);
-			}
-			addStack(&a, newNode(value));
-			cur++;
-		}
-		freeTokens(tokens);
-	}
-	// freeStack(&a); En son a üzerindeki işlemler bitince free yapılacak
-	return (0);
+	return (run_push_swap(argc, argv));
 }
 
 // argc = 4
