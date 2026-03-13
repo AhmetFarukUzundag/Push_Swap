@@ -12,15 +12,31 @@
 
 #include "push_swap.h"
 
+
+static void selected_strategy(t_stack *a)
+{
+
+}
+
 static int run_push_swap(int argc, char **argv)
 {
 	t_stack *a;
+	t_stack *b = NULL;
 
 	if (argc < 2)
 		return (0);
-	if (parser_arguments(argc, argv, &a))
-		return (1);
-	free_stack(&a);
+	if (!parser_arguments(argc, argv, &a))
+		return (0); // hata durumunda 0 return eder
+	if (is_sorted(a))
+		return (free_stack(&a), 0);
+
+	// burada a üzerinde algoritmalar çalışacak
+
+
+
+
+
+	free_stack(&a); // başarılı parse sonrası free
 	return (0);
 }
 

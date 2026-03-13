@@ -17,8 +17,8 @@ int	is_sorted(t_stack *a)
 	while (a && a->next)
 	{
 		if (a->data > a->next->data)
-			return (0);
+			return (0); // sıralı değil
 		a = a->next;
 	}
-	return (1);
+	return (1); // sıralı
 }
