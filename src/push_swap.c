@@ -13,16 +13,17 @@
 #include "push_swap.h"
 
 
-static void selected_strategy(t_stack *a)
-{
+// static void selected_strategy(t_stack *a)
+// {
 
-}
+// }
 
 static int run_push_swap(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b = NULL;
-
+	(void)b;
+	
 	if (argc < 2)
 		return (0);
 	if (!parser_arguments(argc, argv, &a))
