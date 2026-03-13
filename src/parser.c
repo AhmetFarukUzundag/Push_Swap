@@ -67,6 +67,5 @@ int parser_arguments(int argc, char **argv, t_stack **a)
 
         free_tokens(tokens);
     }
-
     return (1); // success
 }

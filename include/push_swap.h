@@ -11,6 +11,7 @@ typedef struct s_stack
 }					t_stack;
 
 t_stack			*new_node(int data);
+
 void			add_stack_back(t_stack **lst, t_stack *new);
 void			free_stack(t_stack **stack);
 
@@ -25,6 +26,7 @@ void				rr(t_stack **a, t_stack **b);
 void				rra(t_stack **a);
 void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
+
 int					is_sorted(t_stack *a);
 char				**ft_split(char const *s, char c);
 long				ft_atol(const char *str, int *error);
