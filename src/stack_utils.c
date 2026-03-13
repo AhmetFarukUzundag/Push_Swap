@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr>+#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr>+#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 10:00:00 by auzundag          #+#    #+#             */
 /*   Updated: 2026/03/13 10:00:00 by auzundag         ###   ########.fr       */
