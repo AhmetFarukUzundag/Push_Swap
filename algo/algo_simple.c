@@ -87,6 +87,7 @@ static void min_to_top(t_stack **a)
             }   
         }      
 }
+
 void	simple_sort(t_stack **a, t_stack **b)
 {
 	int	size;
@@ -107,10 +108,10 @@ void	simple_sort(t_stack **a, t_stack **b)
         else
         {
             min_to_top(a); //minimumu başa al
-		    pb(a, b); //b ye at 
+		    pb(a, b, 1); //b ye at 
 		    size--;
         }
 	}
 	while (*b)
-		pa(a, b);
+		pa(a, b, 1);
 }

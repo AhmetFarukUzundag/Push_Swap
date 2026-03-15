@@ -14,9 +14,10 @@
 
 void sort_two(t_stack **a) // 2 1
 {
-    if ((*a)->value > (*a)->next->value)
+    if ((*a)->data > (*a)->next->data)
         sa(a);
 }
+
 void sort_three(t_stack **a) // 3 lü sayılar olursa her ihtimali yazıp ona gore swapliyorum
 {
     int first;
