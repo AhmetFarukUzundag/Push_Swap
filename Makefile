@@ -1,4 +1,5 @@
 NAME	= push_swap
+DEBUG	= Outdebug
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
@@ -23,6 +24,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+debug: CFLAGS += -g -O0
+debug: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(DEBUG)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@

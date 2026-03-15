@@ -23,8 +23,8 @@ void sort_three(t_stack **a) // 3 lü sayılar olursa her ihtimali yazıp ona go
     int first;
     int second;
     int third;
-    
-    first = (*a)->data; 
+
+    first = (*a)->data;
     second = (*a)->next->data;
     third = (*a)->next->next->data;
     if (first < second && second < third && first < third) // 1 2 3
@@ -44,5 +44,5 @@ void sort_three(t_stack **a) // 3 lü sayılar olursa her ihtimali yazıp ona go
         rra(a);
     }
     else if (first > second && second < third && first < third) // 2 1 3
-        sa(a);   
+        sa(a);
 }
