@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/11 15:26:30 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/15 15:49:21 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 
 // }
 
-static int run_push_swap(int argc, char **argv)
-{
-	t_stack *a;
-	t_stack *b = NULL;
+// static int run_push_swap(int argc, char **argv)
+// {
+// 	t_stack *a;
+// 	//t_stack *b = NULL;
 
-	if (argc < 2)
-		return (0);
-	if (!parser_arguments(argc, argv, &a))
-		return (0); // hata durumunda 0 return eder
-	if (is_sorted(a)) // stack sıralıysa programı sonlandırır
-		return (free_stack(&a), 0);
-	// if (compute_disorder(a))
+// 	if (argc < 2)
+// 		return (0);
+// 	if (!parser_arguments(argc, argv, &a))
+// 		return (0); // hata durumunda 0 return eder
+// 	if (is_sorted(a)) // stack sıralıysa programı sonlandırır
+// 		return (free_stack(&a), 0);
+// 	// if (compute_disorder(a))
 
 	
 
@@ -36,16 +36,16 @@ static int run_push_swap(int argc, char **argv)
 
 
 
-	// burada a üzerinde algoritmalar çalışacak
+// 	// burada a üzerinde algoritmalar çalışacak
 
-	free_stack(&a); // başarılı parse sonrası free
-	return (0);
-}
+// 	free_stack(&a); // başarılı parse sonrası free
+// 	return (0);
+// }
 
-int main(int argc, char **argv)
-{
-	return (run_push_swap(argc, argv));
-}
+// int main(int argc, char **argv)
+// {
+// 	return (run_push_swap(argc, argv));
+// }
 
 // argc = 4
 

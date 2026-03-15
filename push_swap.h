@@ -34,4 +34,9 @@ int					parser_arguments(int argc, char **argv, t_stack **a);
 int 				stack_size(t_stack *stack);
 double 				compute_disorder(t_stack *a);
 
+//algoritmalar
+void	simple_sort(t_stack **a, t_stack **b);
+void sort_two(t_stack **a);
+void sort_three(t_stack **a);
+
 #endif
