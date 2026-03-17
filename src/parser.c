@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 11:27:04 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 08:21:17 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/17 09:00:41 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,38 @@ static void	free_tokens(char **tokens)
 	free(tokens);
 }
 
+static int	parse_tokens(char **tokens, t_stack **a)
+{
+	char	**cur;
+	int		value;
+	int		error;
+
+	cur = tokens;
+	while (*cur)
+	{
+		value = ft_atol(*cur, &error);
+		if (error || check_dup(*a, value))
+			return (0);
+		add_stack_back(a, new_node(value));
+		cur++;
+	}
+	return (1);
+}
+
 int	parser_arguments(int argc, char **argv, t_stack **a)
 {
 	char	**tokens;
-	char	**cur;
 	int		i;
-	int		value;
-	int		error;
 
 	*a = NULL;
 	i = 1;
 	while (i < argc)
 	{
 		tokens = ft_split(argv[i++], ' ');
-		if (!tokens || !*tokens)
-			return (free_tokens(tokens), free_stack(a), write(1, "error\n", 6),
+		if (!tokens || !*tokens || !parse_tokens(tokens, a))
+			return (free_tokens(tokens), free_stack(a), write(1, "Error\n", 6),
 				0);
-		cur = tokens;
-		while (*cur)
-		{
-			value = ft_atol(*cur, &error);
-			if (error || check_dup(*a, value))
-				return (free_tokens(tokens), free_stack(a), write(1, "error\n",
-						6), 0);
-			add_stack_back(a, new_node(value));
-			cur++;
-		}
 		free_tokens(tokens);
 	}
-	return (1); // success
+	return (1);
 }

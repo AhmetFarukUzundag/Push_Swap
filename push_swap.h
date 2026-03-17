@@ -31,7 +31,7 @@ int					is_sorted(t_stack *a);
 char				**ft_split(char const *s, char c);
 long				ft_atol(const char *str, int *error);
 int					parser_arguments(int argc, char **argv, t_stack **a);
-static int			stack_size(t_stack *stack);
+int					stack_size(t_stack *a);
 double				compute_disorder(t_stack *a);
 
 // algoritmalar

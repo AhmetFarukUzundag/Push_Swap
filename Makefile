@@ -5,8 +5,7 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 IFLAGS	= -I.
 
-SRC		= main.c \
-		  src/disorder.c \
+SRC		= src/disorder.c \
 		  src/ft_atol.c \
 		  src/ft_split.c \
 		  src/parser.c \
@@ -16,7 +15,8 @@ SRC		= main.c \
 		  op/reverserotate.c \
 		  op/rotate.c \
 		  op/swap.c \
-		  algo/algo_simple.c
+		  algo/algo_simple.c \
+		  algo/sort_one_three_five.c
 
 OBJ		= $(SRC:.c=.o)
 

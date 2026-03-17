@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 21:59:38 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/17 08:20:34 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/17 09:24:29 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_two(t_stack **a) // 2 1
 }
 
 void	sort_three(t_stack **a)
-		// 3 lü sayılar olursa her ihtimali yazıp ona gore swapliyorum
+// 3 lü sayılar olursa her ihtimali yazıp ona gore swapliyorum
 {
 	int first;
 	int second;
@@ -42,7 +42,7 @@ void	sort_three(t_stack **a)
 	else if (first < second && second > third && first < third) // 1 3 2
 	{
 		sa(a);
-		rra(a);
+		ra(a);
 	}
 	else if (first > second && second < third && first < third) // 2 1 3
 		sa(a);
