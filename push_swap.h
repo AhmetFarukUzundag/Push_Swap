@@ -8,13 +8,13 @@ typedef struct s_stack
 {
 	int				data;
 	struct s_stack	*next;
+	int				index;
 }					t_stack;
 
 t_stack				*new_node(int data);
 
 void				add_stack_back(t_stack **lst, t_stack *new);
 void				free_stack(t_stack **stack);
-
 void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
