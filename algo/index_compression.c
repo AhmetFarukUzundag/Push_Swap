@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 13:20:50 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 13:26:40 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:31:22 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,10 @@ static int	find_index(int *arr, int size, int value)
 	return (-1);
 }
 
-// Sayıların gerçek değerleri yerine sıralamadaki pozisyonlarını (rank) kullanmak.
-// stack a -> buffer'a kopyala -> buffer'ı sort et
-// ->sıralamadan sonra ki indexleri kullan
-
-static void	index_compression(t_stack **a)
+void	index_compression(t_stack **a)
 {
-	int		buf[stack_size(*a)];
 	t_stack	*curr;
+	int		buf[stack_size(*a)];
 	int		i;
 	int		size;
 
@@ -77,5 +73,3 @@ static void	index_compression(t_stack **a)
 		curr = curr->next;
 	}
 }
-// 42 50 78 15
-// 15 42 50 78

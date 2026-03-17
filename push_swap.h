@@ -33,6 +33,7 @@ long				ft_atol(const char *str, int *error);
 int					parser_arguments(int argc, char **argv, t_stack **a);
 int					stack_size(t_stack *a);
 double				compute_disorder(t_stack *a);
+void				index_compression(t_stack **a);
 
 // algoritmalar
 void				simple_sort(t_stack **a, t_stack **b);

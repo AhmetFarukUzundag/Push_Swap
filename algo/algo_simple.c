@@ -6,15 +6,15 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 13:21:30 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/17 14:37:07 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_min(t_stack *a) // en küçük değeri buluyorum
+static int	find_min(t_stack *a)
 {
-	int min;
+	int	min;
 
 	min = a->data;
 	while (a)
@@ -27,11 +27,10 @@ static int	find_min(t_stack *a) // en küçük değeri buluyorum
 }
 
 static int	min_position(t_stack *a)
-// burda en küçük değerin  hangi indexte oldugunu buluyorum
 {
-	int min;
-	int position;
-	int i;
+	int	min;
+	int	position;
+	int	i;
 
 	i = 0;
 	position = 0;
@@ -58,7 +57,6 @@ static void	min_to_top(t_stack **a)
 	move_size = stack_size(*a) / 2;
 	position = min_position(*a);
 	if (position <= move_size)
-	// başa yakınsa burada ra ile atıyorum başa gelene kadar
 	{
 		while (position > 0)
 		{
@@ -69,7 +67,6 @@ static void	min_to_top(t_stack **a)
 	else
 	{
 		reverse_move = stack_size(*a) - position;
-		// burda sona ne kadar yakın oldugunu buluyorum ve rra ile atıyorum başa
 		while (reverse_move > 0)
 		{
 			rra(a);
@@ -97,8 +94,8 @@ void	simple_sort(t_stack **a, t_stack **b)
 		}
 		else
 		{
-			min_to_top(a); // minimumu başa al
-			pb(a, b, 1);   // b ye at
+			min_to_top(a);
+			pb(a, b, 1);
 			size--;
 		}
 	}
