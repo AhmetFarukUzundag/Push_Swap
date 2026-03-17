@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr>+#+  +:+       +#+      */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 10:00:00 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/13 10:00:00 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/17 08:21:29 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,17 @@ void	free_stack(t_stack **stack)
 	}
 }
 
-int stack_size(t_stack *stack)
+int	stack_size(t_stack *stack)
 {
-	int size = 0;
-	
+	int	size;
+
+	size = 0;
 	while (stack)
 	{
-		size++;		
+		size++;
 		stack = stack->next;
 	}
-	return size;
+	return (size);
 }
 
 int	is_sorted(t_stack *a)
