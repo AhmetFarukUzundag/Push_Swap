@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 21:59:38 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/17 09:24:29 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/18 09:41:54 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	sort_three(t_stack **a)
 	int first;
 	int second;
 	int third;
-
 	first = (*a)->data;
 	second = (*a)->next->data;
 	third = (*a)->next->next->data;

@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 14:37:07 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/18 09:41:36 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	min_to_top(t_stack **a)
 	int	position;
 	int	move_size;
 	int	reverse_move;
-
+	
 	move_size = stack_size(*a) / 2;
 	position = min_position(*a);
 	if (position <= move_size)

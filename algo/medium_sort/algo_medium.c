@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 16:21:38 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/18 10:30:16 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 void	medium_sort(t_stack **a, t_stack **b)
 {
-	
+	int	size;
+
+	index_compression(a);
+	// chunk
+	size = stack_size(*a);
+	if (size < 100)
+		pause; // 5 chunk
+	else if (size < 500)
+		pause; // 11 chunk
 }
+
 // 0..n-1 indexler
 // ↓
 // √n chunk
@@ -23,8 +32,6 @@ void	medium_sort(t_stack **a, t_stack **b)
 // A → B push
 // ↓
 // B → A geri toplama
-
-
 
 // index compression
 // ↓
@@ -43,7 +50,6 @@ void	medium_sort(t_stack **a, t_stack **b)
 //     max bul
 //     rotate ile top'a getir
 //     pa
-
 
 // pratikte oluşturulması gereken tahmini chunk miktarı: (karekök olmayacak)
 // n ≤ 100 → 5 chunk
