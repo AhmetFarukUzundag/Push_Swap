@@ -15,8 +15,8 @@ SRC		= src/disorder.c \
 		  op/reverserotate.c \
 		  op/rotate.c \
 		  op/swap.c \
-		  algo/algo_simple.c \
-		  algo/sort_one_three_five.c 
+		  algo/simple_sort/algo_simple.c \
+		  algo/simple_sort/sort_one_three_five.c 
 # 		  algo/algo_medium.c
 
 OBJ		= $(SRC:.c=.o)

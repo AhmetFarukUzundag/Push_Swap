@@ -18,8 +18,10 @@ void ra(t_stack **a)
 	t_stack *first;
 	t_stack *last;
 
-    if (!a || !*a || !(*a)->next)
-        return;
+	if (!a || !*a || !(*a)->next)
+	{
+		return;
+	}
 
 	first = *a;
 	*a = first->next;
@@ -36,8 +38,10 @@ void rb(t_stack **b)
 	t_stack *first;
 	t_stack *last;
 
-    if (!b || !*b || !(*b)->next)
-        return;
+	if (!b || !*b || !(*b)->next)
+	{
+		return;
+	}
 
 	first = *b;
 	*b = first->next;
