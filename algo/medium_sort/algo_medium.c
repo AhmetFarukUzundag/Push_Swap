@@ -22,25 +22,25 @@ void    medium_sort(t_stack **a, t_stack **b)
 
     index_compression(a);
 
-    size = stack_size(*a);
+    size = stack_size(*a); // 50
 
     if (size <= 100)
         chunk_count = 5;
     else
         chunk_count = 11;
 
-    chunk_size = size / chunk_count;
-    range_max = chunk_size;
+    chunk_size = size / chunk_count; // 10
+    range_max = chunk_size; // 10
     pushed = 0;
 
     while (*a)
     {
-        if ((*a)->index <= range_max)
+        if ((*a)->index <= range_max) // 7->index = 4 | r_max = 10 | true
         {
             pb(a, b, 1);
             pushed++;
 
-            if ((*b)->index < range_max - (chunk_size / 2))
+            if ((*b)->index < range_max - (chunk_size / 2)) // 4 < 4 
                 rb(b);
 
             if (pushed == chunk_size)

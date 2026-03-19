@@ -13,39 +13,43 @@
 #include "push_swap.h"
 
 // head en sona gider
-void	ra(t_stack **a)
+void ra(t_stack **a)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_stack *first;
+	t_stack *last;
+
+    if (!a || !*a || !(*a)->next)
+        return;
 
 	first = *a;
 	*a = first->next;
 	last = *a;
-	while (last->next)     // first->next var mı
-		last = last->next; // sonu tutuyor
+	while (last->next)
+		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	// head -> son
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **b)
+void rb(t_stack **b)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_stack *first;
+	t_stack *last;
+
+    if (!b || !*b || !(*b)->next)
+        return;
 
 	first = *b;
 	*b = first->next;
 	last = *b;
-	while (last->next)     // first->next var mı
-		last = last->next; // sonu tutuyor
+	while (last->next)
+		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	// head -> son
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);

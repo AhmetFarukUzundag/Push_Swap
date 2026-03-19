@@ -16,7 +16,7 @@ void	pb(t_stack **a, t_stack **b, int print_on)
 {
 	t_stack	*temp;
 
-	if (!*a)
+	if (!a || !*a || !b)
 		return ;
 	temp = *a;
 	*a = (*a)->next;
@@ -30,7 +30,7 @@ void	pa(t_stack **a, t_stack **b, int print_on)
 {
 	t_stack	*temp;
 
-	if (!*b || !*a)
+	if (!a || !b || !*b)
 		return ;
 	temp = *b;
 	*b = (*b)->next;
