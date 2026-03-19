@@ -55,6 +55,7 @@ void normalize(t_stack *a) // min buluyorum index veriyorum sonraki mini buluyor
     min = find_min(a);
   }
 }
+
 static int find_big_index(t_stack *a) // en büyük indexi buluyorumh
 {
     int max_index;
@@ -72,6 +73,7 @@ static int find_big_index(t_stack *a) // en büyük indexi buluyorumh
     }
     return(max_index);
 }
+
 int how_many_bits(t_stack *a) // en büyük indexin kaç bit oldugunu buluyorumh
 {
     int max;

@@ -12,17 +12,65 @@
 
 #include "push_swap.h"
 
-void	medium_sort(t_stack **a, t_stack **b)
+void    medium_sort(t_stack **a, t_stack **b)
 {
-	int	size;
+    int size;
+    int chunk_count;
+    int chunk_size;
+    int range_max;
+    int pushed;
 
-	index_compression(a);
-	// chunk
-	size = stack_size(*a);
-	if (size < 100)
-		pause; // 5 chunk
-	else if (size < 500)
-		pause; // 11 chunk
+    index_compression(a);
+
+    size = stack_size(*a);
+
+    if (size <= 100)
+        chunk_count = 5;
+    else
+        chunk_count = 11;
+
+    chunk_size = size / chunk_count;
+    range_max = chunk_size;
+    pushed = 0;
+
+    while (*a)
+    {
+        if ((*a)->index <= range_max)
+        {
+            pb(a, b, 1);
+            pushed++;
+
+            if ((*b)->index < range_max - (chunk_size / 2))
+                rb(b);
+
+            if (pushed == chunk_size)
+            {
+                range_max += chunk_size;
+                pushed = 0;
+            }
+        }
+        else
+            ra(a);
+    }
+
+    /* B → A geri toplama */
+    while (*b)
+    {
+        int max_pos = find_max_position(*b);
+
+        if (max_pos <= stack_size(*b) / 2)
+        {
+            while (max_pos--)
+                rb(b);
+        }
+        else
+        {
+            max_pos = stack_size(*b) - max_pos;
+            while (max_pos--)
+                rrb(b);
+        }
+        pa(a, b, 1);
+    }
 }
 
 // 0..n-1 indexler
