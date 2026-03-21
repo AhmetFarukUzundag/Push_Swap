@@ -30,7 +30,7 @@ void    medium_sort(t_stack **a, t_stack **b)
         chunk_count = 11;
 
     chunk_size = size / chunk_count; // 10
-    range_max = chunk_size; // 10
+    range_max = chunk_size;          // 10
     pushed = 0;
 
     while (*a)
@@ -40,7 +40,7 @@ void    medium_sort(t_stack **a, t_stack **b)
             pb(a, b, 1);
             pushed++;
 
-            if ((*b)->index < range_max - (chunk_size / 2)) // 4 < 4 
+            if ((*b)->index < range_max - (chunk_size / 2)) // 4 < 4
                 rb(b);
 
             if (pushed == chunk_size)
@@ -72,33 +72,3 @@ void    medium_sort(t_stack **a, t_stack **b)
         pa(a, b, 1);
     }
 }
-
-// 0..n-1 indexler
-// ↓
-// √n chunk
-// ↓
-// A → B push
-// ↓
-// B → A geri toplama
-
-// index compression
-// ↓
-// chunk_size belirle
-// ↓
-// chunk_range oluştur
-// ↓
-// while A boş değil
-//     if index chunk içindeyse
-//         pb
-//         gerekiyorsa rb
-//     else
-//         ra
-// ↓
-// while B boş değil
-//     max bul
-//     rotate ile top'a getir
-//     pa
-
-// pratikte oluşturulması gereken tahmini chunk miktarı: (karekök olmayacak)
-// n ≤ 100 → 5 chunk
-// n ≤ 500 → 11 chunk
