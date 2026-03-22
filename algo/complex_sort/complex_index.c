@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_complex.c                                     :+:      :+:    :+:   */
+/*   complex_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.com.tr>  #+#  +:+       +#+    */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-03-17 11:57:33 by haydinog          #+#    #+#             */
-/*   Updated: 2026-03-17 11:57:33 by haydinog         ###   ########.fr       */
+/*   Created: 2026/03/17 11:57:33 by haydinog          #+#    #+#             */
+/*   Updated: 2026/03/21 15:26:44 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_stack *find_min(t_stack *a) //min değer atama
     return (min);
 }
 
-void normalize(t_stack *a) // min buluyorum index veriyorum sonraki mini buluyorum sonraki indexi veriyorum
+void normalize(t_stack *a)  // indexleme işlemi // min buluyorum index veriyorum sonraki mini buluyorum sonraki indexi veriyorum
 {
   t_stack *min;
   int       i;
@@ -54,38 +54,4 @@ void normalize(t_stack *a) // min buluyorum index veriyorum sonraki mini buluyor
     i++;
     min = find_min(a);
   }
-}
-
-static int find_big_index(t_stack *a) // en büyük indexi buluyorumh
-{
-    int max_index;
-    t_stack *tmp;
-
-    if (!a)
-        return(0);
-    tmp = a;
-    max_index = tmp->index;
-    while(tmp)
-    {
-        if(max_index < tmp->index)
-            max_index = tmp->index;
-        tmp = tmp->next; 
-    }
-    return(max_index);
-}
-
-int how_many_bits(t_stack *a) // en büyük indexin kaç bit oldugunu buluyorumh
-{
-    int max;
-    int bits;
-
-    bits = 0;
-    max = find_big_index(a);
-
-    while (max != 0)
-    {
-      max = max >> 1;
-      bits++;
-    }
-    return(bits);
 }
