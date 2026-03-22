@@ -11,6 +11,22 @@ typedef struct s_stack
 	int				index;
 }					t_stack;
 
+typedef enum e_strategy
+{
+    STRAT_ADAPTIVE,
+    STRAT_SIMPLE,
+    STRAT_MEDIUM,
+    STRAT_COMPLEX
+}	t_strategy;
+
+typedef struct s_config
+{
+    t_strategy	strategy;
+    int			bench_enabled;
+    double		disorder;      
+}	t_config;
+
+
 t_stack				*new_node(int data);
 
 void				add_stack_back(t_stack **lst, t_stack *new);
