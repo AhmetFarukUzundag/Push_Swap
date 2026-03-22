@@ -31,6 +31,7 @@ static int	run_push_swap(int argc, char **argv)
 		return (free_stack(&a), 0);
 	// if (compute_disorder(a))
 	simple_sort(&a, &b);
+	// medium_sort(&a, &b);
 	// burada a üzerinde algoritmalar çalışacak
 	free_stack(&a); // başarılı parse sonrası free
 	return (0);

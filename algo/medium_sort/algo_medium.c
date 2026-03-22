@@ -24,6 +24,30 @@
 // ↓
 // range büyüt
 
+static int find_max_position(t_stack *stack)
+{
+    int     max_index;
+    int     max_pos;
+    int     pos;
+    t_stack *tmp;
+
+    max_index = -1;
+    max_pos = 0;
+    pos = 0;
+    tmp = stack;
+    while (tmp)
+    {
+        if (tmp->index > max_index)
+        {
+            max_index = tmp->index;
+            max_pos = pos;
+        }
+        tmp = tmp->next;
+        pos++;
+    }
+    return (max_pos);
+}
+
 void rotate_to_top(t_stack **a, int pos)
 {
     int size = stack_size(*a);
