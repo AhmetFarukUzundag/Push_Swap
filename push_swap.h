@@ -51,6 +51,7 @@ int					parser_arguments(int argc, char **argv, t_stack **a);
 int					stack_size(t_stack *a);
 double				compute_disorder(t_stack *a);
 void				index_compression(t_stack **a);
+int	                parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx);
 
 // algoritmalar
 void				simple_sort(t_stack **a, t_stack **b);
@@ -59,5 +60,6 @@ void				sort_three(t_stack **a);
 void				medium_sort(t_stack **a, t_stack **b);
 void				radix_sort(t_stack **a, t_stack **b);
 void 				normalize(t_stack *a);
+void                adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
 
 #endif

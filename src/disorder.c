@@ -21,7 +21,7 @@ double	compute_disorder(t_stack *a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	if (!a || a->next)
+	if (!a || !a->next)
 		return (0.0);
 	i = a;
 	while (i)

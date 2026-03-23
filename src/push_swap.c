@@ -65,6 +65,21 @@ int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
     return (1);			// eğer hiç bir flag bulunamazsa başlangıç indexini yine i'ye set eder. örn: (./push_swap 1 2 3) i = 1
 }
 
+static void strategy_selector(t_config *cfg, t_stack *a, t_stack *b)
+{
+	if (cfg->strategy == STRAT_SIMPLE)
+		simple_sort(&a, &b);
+	else if (cfg->strategy == STRAT_MEDIUM)
+		medium_sort(&a, &b);
+	else if (cfg->strategy == STRAT_COMPLEX)
+	{
+		normalize(a);
+		radix_sort(&a, &b);
+	}
+	else 
+		adaptive_sort(a, b, cfg);
+}
+
 static int	run_push_swap(int argc, char **argv)
 {
     t_stack	 *a;
@@ -86,11 +101,13 @@ static int	run_push_swap(int argc, char **argv)
     if (first_num >= argc)
         return (0); // sadece flag geldi, sayı yok -> hiçbir şey yapma
 
-    if (!parser_arguments(argc - first_num, &argv[first_num], &a))
+    if (!parser_arguments(argc - first_num, &argv[first_num], &a)) // argümanların ilk başladığı yeri gönderiyorum (sayı)
         return (0); // parser zaten Error basıyor 
 
     if (is_sorted(a))
         return (free_stack(&a), 0);
+
+	strategy_selector(&cfg, a, b);
 
     // cfg.strategy ve cfg.bench_enabled'e göre algoritmayı ve benchmark'ı seçersin
 
