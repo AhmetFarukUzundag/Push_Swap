@@ -28,7 +28,6 @@ typedef struct s_config
 
 typedef struct s_bench
 {
-	double	disorder;
 	size_t	total;
 	size_t	sa;
 	size_t	sb;
