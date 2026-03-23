@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 22:24:53 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:53:02 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ static int find_max_position(t_stack *stack)
     return (max_pos);
 }
 
-void rotate_to_top(t_stack **a, int pos, t_bench *bench)
+void rotate_to_top(t_stack **a, int pos, t_bench *bench, int print_on)
 {
     int size = stack_size(*a);
 
     if (pos < size / 2)
     {
         while (pos--)
-            ra(a,bench);
+            ra(a,bench,print_on);
     }
     else
     {
         pos = size - pos;
         while (pos--)
-            rra(a,bench);
+            rra(a,bench,print_on);
     }
 }
 
@@ -82,7 +82,7 @@ int find_nearest_chunk(t_stack *a, int range_max)
     return size;
 }
 
-void push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench)
+void push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench, int print_on)
 {
     int range_max;
     int pushed;
@@ -95,14 +95,14 @@ void push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench)
     {
         pos = find_nearest_chunk(*a, range_max);
 
-        rotate_to_top(a, pos, bench);
+        rotate_to_top(a, pos, bench, print_on);
 
-        pb(a, b,bench, 1);
+        pb(a, b,bench,print_on);
 
         pushed++;
 
         if ((*b)->index < range_max - (chunk_size / 2))
-            rb(b,bench);
+            rb(b,bench,print_on);
 
         if (pushed == chunk_size)
         {
@@ -112,7 +112,7 @@ void push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench)
     }
 }
 
-void push_back_to_a(t_stack **a, t_stack **b, t_bench *bench)
+void push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
     int max_pos;
 
@@ -123,19 +123,19 @@ void push_back_to_a(t_stack **a, t_stack **b, t_bench *bench)
         if (max_pos <= stack_size(*b) / 2)
         {
             while (max_pos--)
-                rb(b,bench);
+                rb(b,bench,print_on);
         }
         else
         {
             max_pos = stack_size(*b) - max_pos;
             while (max_pos--)
-                rrb(b,bench);
+                rrb(b,bench,print_on);
         }
-        pa(a, b, bench, 1);
+        pa(a, b, bench, print_on);
     }
 }
 
-void medium_sort(t_stack **a, t_stack **b, t_bench *bench)
+void medium_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
     int size;
     int chunk_count;
@@ -152,6 +152,6 @@ void medium_sort(t_stack **a, t_stack **b, t_bench *bench)
 
     chunk_size = size / chunk_count;
 
-    push_chunks(a, b, chunk_size, bench);
-    push_back_to_a(a, b, bench);
+    push_chunks(a, b, chunk_size, bench,print_on);
+    push_back_to_a(a, b, bench,print_on);
 }

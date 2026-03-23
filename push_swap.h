@@ -46,17 +46,17 @@ t_stack				*new_node(int data);
 
 void				add_stack_back(t_stack **lst, t_stack *new);
 void				free_stack(t_stack **stack);
-void				sa(t_stack **a, t_bench *bench);
-void				sb(t_stack **b, t_bench *bench);
-void				ss(t_stack **a, t_stack **b, t_bench *bench);
+void				sa(t_stack **a, t_bench *bench,int print_on);
+void				sb(t_stack **b, t_bench *bench,int print_on);
+void				ss(t_stack **a, t_stack **b, t_bench *bench,int print_on);
 void				pa(t_stack **a, t_stack **b, t_bench *bench, int print_on);
 void				pb(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void 				ra(t_stack **a, t_bench *bench);
-void 				rb(t_stack **b, t_bench *bench);
-void 				rr(t_stack **a, t_stack **b, t_bench *bench);
-void				rra(t_stack **a, t_bench *bench);
-void				rrb(t_stack **b, t_bench *bench);
-void				rrr(t_stack **a, t_stack **b, t_bench *bench);
+void 				ra(t_stack **a, t_bench *bench,int print_on);
+void 				rb(t_stack **b, t_bench *bench,int print_on);
+void 				rr(t_stack **a, t_stack **b, t_bench *bench,int print_on);
+void				rra(t_stack **a, t_bench *bench,int print_on);
+void				rrb(t_stack **b, t_bench *bench,int print_on);
+void				rrr(t_stack **a, t_stack **b, t_bench *bench,int print_on);
 
 int	                ft_strncmp(const char *s1, const char *s2, size_t n);
 int					is_sorted(t_stack *a);
@@ -69,13 +69,13 @@ void				index_compression(t_stack **a);
 int	                parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx);
 
 // algoritmalar
-void				simple_sort(t_stack **a, t_stack **b, t_bench *bench);
-void				sort_two(t_stack **a, t_bench *bench);
-void				sort_three(t_stack **a, t_bench *bench);
-void				medium_sort(t_stack **a, t_stack **b, t_bench *bench);
-void				radix_sort(t_stack **a, t_stack **b, t_bench *bench);
+void				simple_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
+void				sort_two(t_stack **a, t_bench *bench, int print_on);
+void				sort_three(t_stack **a, t_bench *bench, int print_on);
+void				medium_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
+void				radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
 void 				normalize(t_stack *a);
-void                adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench);
+void                adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench, int print_on);
 void				bench_print(t_config *cfg, t_bench *b);
 void				bench_init(t_bench *b);
 

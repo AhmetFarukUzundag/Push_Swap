@@ -6,14 +6,14 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:18 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 22:07:03 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:51:09 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // head en sona gider
-void ra(t_stack **a, t_bench *bench)
+void ra(t_stack **a, t_bench *bench, int print_on)
 {
 	t_stack *first;
 	t_stack *last;
@@ -30,15 +30,16 @@ void ra(t_stack **a, t_bench *bench)
 		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	write(1, "ra\n", 3);
-		if (bench)
+	if (print_on)
+		write(1, "ra\n", 3);
+	if (bench)
 	{
 		bench->ra++;
 		bench->total++;
 	}
 }
 
-void rb(t_stack **b, t_bench *bench)
+void rb(t_stack **b, t_bench *bench, int print_on)
 {
 	t_stack *first;
 	t_stack *last;
@@ -55,20 +56,22 @@ void rb(t_stack **b, t_bench *bench)
 		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	write(1, "rb\n", 3);
-		if (bench)
+	if (print_on)
+		write(1, "rb\n", 3);
+	if (bench)
 	{
 		bench->rb++;
 		bench->total++;
 	}
 }
 
-void rr(t_stack **a, t_stack **b, t_bench *bench)
+void rr(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
-	ra(a,bench);
-	rb(b,bench);
-	write(1, "rr\n", 3);
-		if (bench)
+	ra(a,bench, print_on);
+	rb(b,bench, print_on);
+	if (print_on)
+		write(1, "rr\n", 3);
+	if (bench)
 	{
 		bench->rr++;
 		bench->total++;

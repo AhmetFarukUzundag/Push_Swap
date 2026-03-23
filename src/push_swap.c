@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 22:45:25 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:48:56 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,19 @@ int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
 
 static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b, t_bench *bench)
 {
+	int	print_on;
+	print_on = !cfg->bench_enabled;
     if (cfg->strategy == STRAT_SIMPLE)
-        simple_sort(a, b,bench);
+        simple_sort(a, b,bench,print_on);
     else if (cfg->strategy == STRAT_MEDIUM)
-        medium_sort(a, b,bench);
+        medium_sort(a, b,bench,print_on);
     else if (cfg->strategy == STRAT_COMPLEX)
     {
         normalize(*a);
-        radix_sort(a, b, bench);
+        radix_sort(a, b, bench,print_on);
     }
     else
-        adaptive_sort(a, b, cfg, bench);
+        adaptive_sort(a, b, cfg, bench,print_on);
 }
 
 int main(int argc, char **argv)
@@ -105,14 +107,17 @@ int main(int argc, char **argv)
     if (first_num >= argc)
         return (0); // sadece flag geldi, sayı yok -> hiçbir şey yapma
 
-    if (!parser_arguments(argc - first_num, &argv[first_num], &a)) // argümanların ilk başladığı yeri gönderiyorum (sayı)
-        return (0); // parser zaten Error basıyor 
-
+    if (!parser_arguments(argc - first_num, &argv[first_num], &a))// argümanların ilk başladığı yeri gönderiyorum (sayı)
+    {
+		return (0); // parser zaten Error basıyor 
+	}
+	cfg.disorder = compute_disorder(a); //disorder 
     if (is_sorted(a))
     {
         free_stack(&a);
         return (0);
     }
+	
         strategy_selector(&cfg, &a, &b, &bench);
 
     if (cfg.bench_enabled) // bench aktifse bench fonksiyonunu çağır

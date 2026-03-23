@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 10:27:54 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/23 22:18:07 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:45:14 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int how_many_bits(t_stack **a) // en büyük indexin kaç bit oldugunu bu
 	return(bits);
 }
 
-void radix_sort(t_stack **a, t_stack **b, t_bench *bench)
+void radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
 	int		size_a;
 	int		max_bits;
@@ -62,13 +62,13 @@ void radix_sort(t_stack **a, t_stack **b, t_bench *bench)
 		while(j < size_a)
 		{
 			if (((*a)->index >> i) & 1)
-				ra(a,bench);
+				ra(a,bench,print_on);
 			else
-				pb(a,b,bench,1);
+				pb(a,b,bench,print_on);
 			j++;
 		}
 		while(*b)
-			pa(a,b,bench,1);
+			pa(a,b,bench,print_on);
 		i++;
 	}
 }

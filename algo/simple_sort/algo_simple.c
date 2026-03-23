@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 22:21:20 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:52:36 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	min_position(t_stack *a)
 	return (position);
 }
 
-static void	min_to_top(t_stack **a, t_bench *bench)
+static void	min_to_top(t_stack **a, t_bench *bench, int print_on)
 {
 	int	position;
 	int	move_size;
@@ -60,7 +60,7 @@ static void	min_to_top(t_stack **a, t_bench *bench)
 	{
 		while (position > 0)
 		{
-			ra(a, bench);
+			ra(a, bench,print_on);
 			position--;
 		}
 	}
@@ -69,13 +69,13 @@ static void	min_to_top(t_stack **a, t_bench *bench)
 		reverse_move = stack_size(*a) - position;
 		while (reverse_move > 0)
 		{
-			rra(a, bench);
+			rra(a, bench,print_on);
 			reverse_move--;
 		}
 	}
 }
 
-void	simple_sort(t_stack **a, t_stack **b, t_bench *bench)
+void	simple_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
 	int	size;
 
@@ -84,21 +84,21 @@ void	simple_sort(t_stack **a, t_stack **b, t_bench *bench)
 	{
 		if (size == 3)
 		{
-			sort_three(a,bench);
+			sort_three(a,bench,print_on);
 			break ;
 		}
 		if (size == 2)
 		{
-			sort_two(a,bench);
+			sort_two(a,bench,print_on);
 			break ;
 		}
 		else
 		{
-			min_to_top(a,bench);
-			pb(a, b,bench, 1);
+			min_to_top(a,bench,print_on);
+			pb(a, b,bench, print_on);
 			size--;
 		}
 	}
 	while (*b)
-		pa(a, b, bench, 1);
+		pa(a, b, bench, print_on);
 }

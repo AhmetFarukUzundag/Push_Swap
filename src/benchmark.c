@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 21:18:32 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/23 22:15:42 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:48:00 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,22 @@ static void	putendl(char *s)
 }
 
 
-static void	put_percent(double d) // disorder değerini %ye ceviriyor 0.49 ise %49 yapıyor
+
+static void	put_percent(double d) // discorderi %49.00 seklinde basıyor
 {
-	putnbr((int)(d * 100));
+	int		full;
+	int		frac;
+
+	full = (int)(d * 100);
+	frac = (int)(d * 10000) % 100;
+	putnbr(full);
+	write(2, ".", 1);
+	if (frac < 10)
+		write(2, "0", 1);
+	putnbr(frac);
 	putstr("%");
 }
+
 
 static char	*get_strategy_name(t_strategy strategy)
 {
@@ -88,7 +99,7 @@ static char	*get_complexity(t_strategy strategy, double disorder)
 }
 void	bench_print(t_config *cfg, t_bench *b)
 {
-	if (!cfg->bench_enabled)
+	if (!cfg || !b || !cfg->bench_enabled)
 		return ;
 	putstr("[bench] disorder: ");
 	put_percent(cfg->disorder);
@@ -99,5 +110,18 @@ void	bench_print(t_config *cfg, t_bench *b)
 	putendl(get_complexity(cfg->strategy, cfg->disorder));
 	putstr("[bench] total_op: ");
 	putnbr(b->total);
+	putendl("");
+    putstr("[bench] sa: "); putnbr(b->sa);
+	putstr(" sb: "); putnbr(b->sb);
+	putstr(" ss: "); putnbr(b->ss);
+	putstr(" pa: "); putnbr(b->pa);
+	putstr(" pb: "); putnbr(b->pb);
+	putendl("");
+	putstr("[bench] ra: "); putnbr(b->ra);
+	putstr(" rb: "); putnbr(b->rb);
+	putstr(" rr: "); putnbr(b->rr);
+	putstr(" rra: "); putnbr(b->rra);
+	putstr(" rrb: "); putnbr(b->rrb);
+	putstr(" rrr: "); putnbr(b->rrr);
 	putendl("");
 }
