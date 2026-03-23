@@ -84,10 +84,10 @@ static int	run_push_swap(int argc, char **argv)
         return (write(2, "Error\n", 6), 0);
 
     if (first_num >= argc)
-        return (0); // sadece flag geldi, sayı yok → hiçbir şey yapma
+        return (0); // sadece flag geldi, sayı yok -> hiçbir şey yapma
 
     if (!parser_arguments(argc - first_num, &argv[first_num], &a))
-        return (0); // parser zaten Error basıyor (stderr’e çevireceksin)
+        return (0); // parser zaten Error basıyor 
 
     if (is_sorted(a))
         return (free_stack(&a), 0);
