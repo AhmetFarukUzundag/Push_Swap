@@ -23,7 +23,7 @@ typedef struct s_config
 {
     t_strategy	strategy;
     int			bench_enabled;
-    double		disorder;      
+    double		disorder;     
 }	t_config;
 
 
@@ -43,6 +43,7 @@ void				rra(t_stack **a);
 void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
+int	                ft_strncmp(const char *s1, const char *s2, size_t n);
 int					is_sorted(t_stack *a);
 char				**ft_split(char const *s, char c);
 long				ft_atol(const char *str, int *error);
@@ -58,4 +59,5 @@ void				sort_three(t_stack **a);
 void				medium_sort(t_stack **a, t_stack **b);
 void				radix_sort(t_stack **a, t_stack **b);
 void 				normalize(t_stack *a);
+
 #endif

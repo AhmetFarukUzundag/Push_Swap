@@ -12,32 +12,93 @@
 
 #include "push_swap.h"
 
-// static void selected_strategy(t_stack *a)
-// {
+static int	set_strategy_flag(const char *arg, t_config *cfg, int *seen)
+{
+    if ((ft_strncmp(arg, "--simple", 8) == 0) && arg[8] == '\0')
+        cfg->strategy = STRAT_SIMPLE;
+    else if ((ft_strncmp(arg, "--medium", 8) == 0) && arg[8] == '\0')
+        cfg->strategy = STRAT_MEDIUM;
+    else if ((ft_strncmp(arg, "--complex", 9) == 0) && arg[9] == '\0')
+        cfg->strategy = STRAT_COMPLEX;
+    else if ((ft_strncmp(arg, "--adaptive", 10) == 0) && arg[10] == '\0')
+        cfg->strategy = STRAT_ADAPTIVE;
+    else
+        return (0);
+    if (*seen) // eğer daha önce flag görüldüye 0 return eder
+        return (0);
+    *seen = 1;
+    return (1);
+}
 
-// }
+static int	handle_flag(const char *arg, t_config *cfg,
+                        int *strategy_seen, int *bench_seen)
+{
+    if ((ft_strncmp(arg, "--bench", 7) == 0) && arg[7] == '\0')
+    {
+        if (*bench_seen)
+            return (0);
+        *bench_seen = 1; // --bench flagi varsa bench_seen'i 1 olarak set et (bench görüldü)
+        cfg->bench_enabled = 1; // bench_enabled (bench var)
+        return (1);
+    }
+    return (set_strategy_flag(arg, cfg, strategy_seen)); // eşleşmediyse strateji flag'i var mı diye kontrol (--simple, --medium...)
+}
+
+int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
+{
+    int	i;
+    int	strategy_seen;
+    int	bench_seen;
+
+    cfg->strategy = STRAT_ADAPTIVE; // default ayar
+    cfg->bench_enabled = 0; // başlangıçta hepsi 0, çünkü henüz hiç bir flag görülmedi
+    strategy_seen = 0;
+    bench_seen = 0;
+    i = 1;
+    while (i < argc && argv[i][0] == '-' && argv[i][1] == '-') // argv[1] ->  --bench --simple  -- ilk iki index '--' ise
+    {
+        if (!handle_flag(argv[i], cfg, &strategy_seen, &bench_seen))
+            return (0);
+        i++;
+    }
+    *first_num_idx = i; // flaglerden sonra sayıların başladığı yeri tutar örn: (./push_swap --bench --simple 1 2 3...) i = 3
+    return (1);			// eğer hiç bir flag bulunamazsa başlangıç indexini yine i'ye set eder. örn: (./push_swap 1 2 3) i = 1
+}
 
 static int	run_push_swap(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+    t_stack	 *a;
+    t_stack	 *b;
+    t_config cfg;
+    int		 first_num;
 
-	b = NULL;
-	if (argc < 2)
-		return (0);
-	if (!parser_arguments(argc, argv, &a))
-		return (0);   // hata durumunda 0 return eder
-	if (is_sorted(a)) // stack sıralıysa programı sonlandırır
-		return (free_stack(&a), 0);
-	normalize(a);
-	// if (compute_disorder(a))
-	simple_sort(&a, &b);
-	// burada a üzerinde algoritmalar çalışacak
-	free_stack(&a); // başarılı parse sonrası free
-	return (0);
+    b = NULL;
+    if (argc < 2)
+        return (0);
+
+    if (!parse_flags(argc, argv, &cfg, &first_num)) 
+	/*
+	Aynı strateji flag’i birden fazla (veya birden fazla farklı strateji)
+	--bench birden fazla
+	Tanınmayan --foo gibi bir flag*/
+        return (write(2, "Error\n", 6), 0);
+
+    if (first_num >= argc)
+        return (0); // sadece flag geldi, sayı yok → hiçbir şey yapma
+
+    if (!parser_arguments(argc - first_num, &argv[first_num], &a))
+        return (0); // parser zaten Error basıyor (stderr’e çevireceksin)
+
+    if (is_sorted(a))
+        return (free_stack(&a), 0);
+
+    // cfg.strategy ve cfg.bench_enabled'e göre algoritmayı ve benchmark'ı seçersin
+
+    free_stack(&a);
+    return (0);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	return (run_push_swap(argc, argv));
 }

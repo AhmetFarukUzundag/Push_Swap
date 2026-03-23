@@ -67,7 +67,7 @@ int	parser_arguments(int argc, char **argv, t_stack **a)
 	{
 		tokens = ft_split(argv[i++], ' ');
 		if (!tokens || !*tokens || !parse_tokens(tokens, a))
-			return (free_tokens(tokens), free_stack(a), write(1, "Error\n", 6),
+			return (free_tokens(tokens), free_stack(a), write(2, "Error\n", 6),
 				0);
 		free_tokens(tokens);
 	}
