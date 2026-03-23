@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     t_stack	 *a;
     t_stack	 *b;
     t_config cfg;
-	t_bench		bench;
+	t_bench	bench;
     int		 first_num;
 
     b = NULL;
@@ -95,11 +95,12 @@ int main(int argc, char **argv)
 	}
 	bench_init(&bench); // benchin setini 0 a cekiyorum
     if (!parse_flags(argc, argv, &cfg, &first_num)) 
+		return (write(2, "Error\n", 6), 0);
 	/*
 	Aynı strateji flag’i birden fazla (veya birden fazla farklı strateji)
 	--bench birden fazla
 	Tanınmayan --foo gibi bir flag*/
-        return (write(2, "Error\n", 6), 0);
+        
 
     if (first_num >= argc)
         return (0); // sadece flag geldi, sayı yok -> hiçbir şey yapma
@@ -108,13 +109,14 @@ int main(int argc, char **argv)
         return (0); // parser zaten Error basıyor 
 
     if (is_sorted(a))
-        return (free_stack(&a), 0);
+    {
+        free_stack(&a);
+        return (0);
+    }
+        strategy_selector(&cfg, &a, &b, &bench);
 
-	strategy_selector(&cfg, &a, &b);
-
-	strategy_selector(&cfg, &a, &b); // algo seçildi
-	if (cfg.bench_enabled) // bench aktifse bench fonksiyonunu çağır
-		// bench_print(&cfg, parameters...);
+    if (cfg.bench_enabled) // bench aktifse bench fonksiyonunu çağır
+		bench_print(&cfg, &bench);
 
     free_stack(&a);
     return (0);

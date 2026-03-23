@@ -20,13 +20,12 @@ SRC		= src/disorder.c \
 		  algo/simple_sort/algo_simple.c \
 		  algo/simple_sort/sort_one_three_five.c \
 		  algo/medium_sort/algo_medium.c \
+		  algo/medium_sort/algo_medium_helpers.c \
 		  algo/index_compression.c \
 		  algo/adaptive.c \
-		  algo/complex_sort/algo_complex.c\
-		  algo/complex_sort/complex_index.c\
-# 		  algo/algo_medium.c
+		  algo/complex_sort/algo_complex.c \
+		  algo/complex_sort/complex_index.c \
 		  
-
 
 OBJ		= $(SRC:.c=.o)
 

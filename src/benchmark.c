@@ -27,6 +27,7 @@ void	bench_init(t_bench *b)
 	b->rrb = 0;
 	b->rrr = 0;
 }
+
 static void	putstr(char *s)
 {
 	while (*s)
