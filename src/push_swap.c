@@ -80,7 +80,7 @@ static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b)
         adaptive_sort(a, b, cfg);
 }
 
-static int	run_push_swap(int argc, char **argv)
+int main(int argc, char **argv)
 {
     t_stack	 *a;
     t_stack	 *b;
@@ -107,15 +107,13 @@ static int	run_push_swap(int argc, char **argv)
     if (is_sorted(a))
         return (free_stack(&a), 0);
 
-	strategy_selector(&cfg, &a, &b);
+	if (cfg.bench_enabled && cfg.strategy != STRAT_ADAPTIVE) // bench flagi aktifse ve seçilen strateji adaptive değilse disorder hesaplanır. (eğer adaptive ise zaten hesaplanmıştır (adaptive içinde))
+		cfg.disorder = compute_disorder(a);
 
-    // cfg.strategy ve cfg.bench_enabled'e göre algoritmayı ve benchmark'ı seçersin
+	strategy_selector(&cfg, &a, &b); // algo seçildi
+	if (cfg.bench_enabled) // bench aktifse bench fonksiyonunu çağır
+		// bench_print(&cfg, parameters...);
 
     free_stack(&a);
     return (0);
-}
-
-int main(int argc, char **argv)
-{
-	return (run_push_swap(argc, argv));
 }

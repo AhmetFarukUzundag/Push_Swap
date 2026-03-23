@@ -62,7 +62,7 @@ int	parser_arguments(int argc, char **argv, t_stack **a)
 	int		i;
 
 	*a = NULL;
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		tokens = ft_split(argv[i++], ' ');

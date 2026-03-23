@@ -61,7 +61,7 @@ void	rrb(t_stack **b, t_bench *bench)
 	prev->next = NULL;
 	last->next = *b;
 	*b = last;
-	write(1, "rra\n", 4);
+	write(1, "rrb\n", 4);
 	if (bench)
 	{
 		bench->rrb++;
