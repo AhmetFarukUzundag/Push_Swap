@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 08:20:44 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/23 19:21:51 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(t_stack **a, t_stack **b, int print_on)
+void	pb(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
 	t_stack	*temp;
 
@@ -24,9 +24,14 @@ void	pb(t_stack **a, t_stack **b, int print_on)
 	*b = temp;
 	if (print_on)
 		write(1, "pb\n", 3);
+	if (bench)
+		{
+			bench->pb++;
+			bench->total++;
+		}
 }
 
-void	pa(t_stack **a, t_stack **b, int print_on)
+void	pa(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
 	t_stack	*temp;
 
@@ -38,4 +43,9 @@ void	pa(t_stack **a, t_stack **b, int print_on)
 	*a = temp;
 	if (print_on)
 		write(1, "pa\n", 3);
+		if (bench)
+		{
+			bench->pa++;
+			bench->total++
+		}
 }

@@ -26,6 +26,22 @@ typedef struct s_config
     double		disorder;     
 }	t_config;
 
+typedef struct s_bench
+{
+	double	disorder;
+	size_t	total;
+	size_t	sa;
+	size_t	sb;
+	size_t	ss;
+	size_t	pa;
+	size_t	pb;
+	size_t	ra;
+	size_t	rb;
+	size_t	rr;
+	size_t	rra;
+	size_t	rrb;
+	size_t	rrr;
+}	t_bench;
 
 t_stack				*new_node(int data);
 

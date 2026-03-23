@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 08:20:54 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/23 19:25:29 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,39 @@ void	swap(t_stack **stack)
 	first->next = second->next;
 	second->next = first;
 	*stack = second;
+
 }
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, t_bench *bench)
 {
 	swap(a);
 	write(1, "sa\n", 3);
+		if (bench)
+	{
+		bench->sa++;
+		bench->total++;
+	}
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, t_bench *bench)
 {
 	swap(b);
 	write(1, "sb\n", 3);
+		if (bench)
+	{
+		bench->sb++;
+		bench->total++;
+	}
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, t_bench *bench)
 {
 	swap(a);
 	swap(b);
 	write(1, "ss\n", 3);
+		if (bench)
+	{
+		bench->ss++;
+		bench->total++;
+	}
 }

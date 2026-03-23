@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:18 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/17 08:20:53 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/23 19:24:27 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // head en sona gider
-void ra(t_stack **a)
+void ra(t_stack **a, t_bench *bench)
 {
 	t_stack *first;
 	t_stack *last;
@@ -31,9 +31,14 @@ void ra(t_stack **a)
 	last->next = first;
 	first->next = NULL;
 	write(1, "ra\n", 3);
+		if (bench)
+	{
+		bench->ra++;
+		bench->total++;
+	}
 }
 
-void rb(t_stack **b)
+void rb(t_stack **b, t_bench *bench)
 {
 	t_stack *first;
 	t_stack *last;
@@ -51,11 +56,21 @@ void rb(t_stack **b)
 	last->next = first;
 	first->next = NULL;
 	write(1, "rb\n", 3);
+		if (bench)
+	{
+		bench->rb++;
+		bench->total++;
+	}
 }
 
-void rr(t_stack **a, t_stack **b)
+void rr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	ra(a);
 	rb(b);
 	write(1, "rr\n", 3);
+		if (bench)
+	{
+		bench->rr++;
+		bench->total++;
+	}
 }
