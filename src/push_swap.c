@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/22 15:48:38 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:45:25 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
     return (1);			// eğer hiç bir flag bulunamazsa başlangıç indexini yine i'ye set eder. örn: (./push_swap 1 2 3) i = 1
 }
 
-static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b)
+static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b, t_bench *bench)
 {
     if (cfg->strategy == STRAT_SIMPLE)
-        simple_sort(a, b);
+        simple_sort(a, b,bench);
     else if (cfg->strategy == STRAT_MEDIUM)
-        medium_sort(a, b);
+        medium_sort(a, b,bench);
     else if (cfg->strategy == STRAT_COMPLEX)
     {
         normalize(*a);
-        radix_sort(a, b);
+        radix_sort(a, b, bench);
     }
     else
-        adaptive_sort(a, b, cfg);
+        adaptive_sort(a, b, cfg, bench);
 }
 
 int main(int argc, char **argv)
@@ -85,12 +85,15 @@ int main(int argc, char **argv)
     t_stack	 *a;
     t_stack	 *b;
     t_config cfg;
+	t_bench		bench;
     int		 first_num;
 
     b = NULL;
     if (argc < 2)
+	{
         return (0);
-
+	}
+	bench_init(&bench); // benchin setini 0 a cekiyorum
     if (!parse_flags(argc, argv, &cfg, &first_num)) 
 	/*
 	Aynı strateji flag’i birden fazla (veya birden fazla farklı strateji)
@@ -107,8 +110,7 @@ int main(int argc, char **argv)
     if (is_sorted(a))
         return (free_stack(&a), 0);
 
-	if (cfg.bench_enabled && cfg.strategy != STRAT_ADAPTIVE) // bench flagi aktifse ve seçilen strateji adaptive değilse disorder hesaplanır. (eğer adaptive ise zaten hesaplanmıştır (adaptive içinde))
-		cfg.disorder = compute_disorder(a);
+	strategy_selector(&cfg, &a, &b);
 
 	strategy_selector(&cfg, &a, &b); // algo seçildi
 	if (cfg.bench_enabled) // bench aktifse bench fonksiyonunu çağır

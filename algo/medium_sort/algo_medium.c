@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_medium.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/18 10:30:16 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:24:53 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ static int find_max_position(t_stack *stack)
     return (max_pos);
 }
 
-void rotate_to_top(t_stack **a, int pos)
+void rotate_to_top(t_stack **a, int pos, t_bench *bench)
 {
     int size = stack_size(*a);
 
     if (pos < size / 2)
     {
         while (pos--)
-            ra(a);
+            ra(a,bench);
     }
     else
     {
         pos = size - pos;
         while (pos--)
-            rra(a);
+            rra(a,bench);
     }
 }
 
@@ -82,7 +82,7 @@ int find_nearest_chunk(t_stack *a, int range_max)
     return size;
 }
 
-void push_chunks(t_stack **a, t_stack **b, int chunk_size)
+void push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench)
 {
     int range_max;
     int pushed;
@@ -95,14 +95,14 @@ void push_chunks(t_stack **a, t_stack **b, int chunk_size)
     {
         pos = find_nearest_chunk(*a, range_max);
 
-        rotate_to_top(a, pos);
+        rotate_to_top(a, pos, bench);
 
-        pb(a, b, 1);
+        pb(a, b,bench, 1);
 
         pushed++;
 
         if ((*b)->index < range_max - (chunk_size / 2))
-            rb(b);
+            rb(b,bench);
 
         if (pushed == chunk_size)
         {
@@ -112,7 +112,7 @@ void push_chunks(t_stack **a, t_stack **b, int chunk_size)
     }
 }
 
-void push_back_to_a(t_stack **a, t_stack **b)
+void push_back_to_a(t_stack **a, t_stack **b, t_bench *bench)
 {
     int max_pos;
 
@@ -123,19 +123,19 @@ void push_back_to_a(t_stack **a, t_stack **b)
         if (max_pos <= stack_size(*b) / 2)
         {
             while (max_pos--)
-                rb(b);
+                rb(b,bench);
         }
         else
         {
             max_pos = stack_size(*b) - max_pos;
             while (max_pos--)
-                rrb(b);
+                rrb(b,bench);
         }
-        pa(a, b, 1);
+        pa(a, b, bench, 1);
     }
 }
 
-void medium_sort(t_stack **a, t_stack **b)
+void medium_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
     int size;
     int chunk_count;
@@ -152,6 +152,6 @@ void medium_sort(t_stack **a, t_stack **b)
 
     chunk_size = size / chunk_count;
 
-    push_chunks(a, b, chunk_size);
-    push_back_to_a(a, b);
+    push_chunks(a, b, chunk_size, bench);
+    push_back_to_a(a, b, bench);
 }

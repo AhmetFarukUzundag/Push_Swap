@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 19:21:51 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:04:09 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	pa(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 	*a = temp;
 	if (print_on)
 		write(1, "pa\n", 3);
-		if (bench)
-		{
-			bench->pa++;
-			bench->total++
-		}
+	if (bench)
+	{
+		bench->pa++;
+		bench->total++;
+	}
 }

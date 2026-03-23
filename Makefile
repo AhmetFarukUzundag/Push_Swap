@@ -11,6 +11,8 @@ SRC		= src/disorder.c \
 		  src/parser.c \
 		  src/push_swap.c \
 		  src/stack_utils.c \
+		  src/benchmark.c \
+		  src/ft_strncmp.c \
 		  op/push.c \
 		  op/reverserotate.c \
 		  op/rotate.c \
@@ -18,10 +20,12 @@ SRC		= src/disorder.c \
 		  algo/simple_sort/algo_simple.c \
 		  algo/simple_sort/sort_one_three_five.c \
 		  algo/medium_sort/algo_medium.c \
-		  algo/index_compression.c
+		  algo/index_compression.c \
+		  algo/adaptive.c \
 		  algo/complex_sort/algo_complex.c\
 		  algo/complex_sort/complex_index.c\
 # 		  algo/algo_medium.c
+		  
 
 
 OBJ		= $(SRC:.c=.o)

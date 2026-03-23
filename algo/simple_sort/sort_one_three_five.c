@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   sort_one_three_five.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 21:59:38 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/18 09:41:54 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:19:33 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_stack **a) // 2 1
+void	sort_two(t_stack **a, t_bench *bench) // 2 1
 {
 	if ((*a)->data > (*a)->next->data)
-		sa(a);
+		sa(a,bench);
 }
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_bench *bench)
 // 3 lü sayılar olursa her ihtimali yazıp ona gore swapliyorum
 {
 	int first;
@@ -30,19 +30,19 @@ void	sort_three(t_stack **a)
 	if (first < second && second < third && first < third) // 1 2 3
 		return ;
 	else if (first > second && second < third && first > third) // 3 1 2
-		ra(a);
+		ra(a, bench);
 	else if (first > second && second > third && first > third) // 3 2 1
 	{
-		sa(a);
-		rra(a);
+		sa(a,bench);
+		rra(a,bench);
 	}
 	else if (first < second && second > third && first > third) // 2 3 1
-		rra(a);
+		rra(a,bench);
 	else if (first < second && second > third && first < third) // 1 3 2
 	{
-		sa(a);
-		ra(a);
+		sa(a,bench);
+		ra(a,bench);
 	}
 	else if (first > second && second < third && first < third) // 2 1 3
-		sa(a);
+		sa(a,bench);
 }

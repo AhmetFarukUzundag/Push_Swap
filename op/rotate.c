@@ -6,7 +6,7 @@
 /*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:18 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 19:24:27 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/23 22:07:03 by haydinog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void rb(t_stack **b, t_bench *bench)
 
 void rr(t_stack **a, t_stack **b, t_bench *bench)
 {
-	ra(a);
-	rb(b);
+	ra(a,bench);
+	rb(b,bench);
 	write(1, "rr\n", 3);
 		if (bench)
 	{
