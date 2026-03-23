@@ -60,6 +60,7 @@ void				sort_three(t_stack **a);
 void				medium_sort(t_stack **a, t_stack **b);
 void				radix_sort(t_stack **a, t_stack **b);
 void 				normalize(t_stack *a);
-void                adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
+void                adaptive_sort(t_stack **a, t_stack **b, t_config *cfg);
+
 
 #endif
