@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:16:07 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:29:46 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_config
 	int				print_on;
 	int				bench_enabled;
 	double			disorder;
+	int				size;
 	int				chunk_size;
 }					t_config;
 

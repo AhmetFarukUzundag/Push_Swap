@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:18:04 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:38:43 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ static void	push_chunks(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 	}
 }
 
-static void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
+static void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench,
+		t_config *cfg)
 {
 	int	max_pos;
 
@@ -126,11 +127,6 @@ void	medium_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 
 	index_compression(a);
 	size = stack_size(*a);
-	if (size == 3)
-	{
-		sort_three(a, bench, cfg);
-		return ;
-	}
 	if (size <= 100)
 		chunk_count = 5;
 	else

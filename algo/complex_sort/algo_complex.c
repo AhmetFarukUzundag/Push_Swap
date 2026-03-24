@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 10:27:54 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/24 14:34:22 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:39:14 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 
 	max_bits = how_many_bits(a);
 	size_a = stack_size(*a);
-	if (size_a == 3)
-		return (sort_three(a, bench, cfg));
 	i = 0;
 	while (i < max_bits)
 	{

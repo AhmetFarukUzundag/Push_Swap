@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:11:22 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:33:23 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b,
 		t_bench *bench)
 {
 	cfg->print_on = !cfg->bench_enabled;
+	cfg->size = stack_size(*a);
 	if (cfg->strategy == STRAT_SIMPLE)
 		simple_sort(a, b, bench, cfg);
 	else if (cfg->strategy == STRAT_MEDIUM)
@@ -100,6 +101,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!parser_arguments(argc - first_num, &argv[first_num], &a))
 		return (0);
+	cfg.size = stack_size(a);
 	cfg.disorder = compute_disorder(a);
 	if (is_sorted(a))
 		return (free_stack(&a), 0);
