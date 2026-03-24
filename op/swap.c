@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 23:42:57 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:53:54 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	swap(t_stack **stack)
 	first->next = second->next;
 	second->next = first;
 	*stack = second;
-
 }
 
 void	sa(t_stack **a, t_bench *bench, int print_on)

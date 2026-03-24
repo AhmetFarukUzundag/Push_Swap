@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 23:52:36 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:52:55 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ static void	min_to_top(t_stack **a, t_bench *bench, int print_on)
 	int	position;
 	int	move_size;
 	int	reverse_move;
-	
+
 	move_size = stack_size(*a) / 2;
 	position = min_position(*a);
 	if (position <= move_size)
 	{
 		while (position > 0)
 		{
-			ra(a, bench,print_on);
+			ra(a, bench, print_on);
 			position--;
 		}
 	}
@@ -69,7 +69,7 @@ static void	min_to_top(t_stack **a, t_bench *bench, int print_on)
 		reverse_move = stack_size(*a) - position;
 		while (reverse_move > 0)
 		{
-			rra(a, bench,print_on);
+			rra(a, bench, print_on);
 			reverse_move--;
 		}
 	}
@@ -84,18 +84,18 @@ void	simple_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 	{
 		if (size == 3)
 		{
-			sort_three(a,bench,print_on);
+			sort_three(a, bench, print_on);
 			break ;
 		}
 		if (size == 2)
 		{
-			sort_two(a,bench,print_on);
+			sort_two(a, bench, print_on);
 			break ;
 		}
 		else
 		{
-			min_to_top(a,bench,print_on);
-			pb(a, b,bench, print_on);
+			min_to_top(a, bench, print_on);
+			pb(a, b, bench, print_on);
 			size--;
 		}
 	}

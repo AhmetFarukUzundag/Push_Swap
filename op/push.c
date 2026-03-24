@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 22:04:09 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:53:28 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	pb(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 	if (print_on)
 		write(1, "pb\n", 3);
 	if (bench)
-		{
-			bench->pb++;
-			bench->total++;
-		}
+	{
+		bench->pb++;
+		bench->total++;
+	}
 }
 
 void	pa(t_stack **a, t_stack **b, t_bench *bench, int print_on)

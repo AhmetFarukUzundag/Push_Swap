@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 10:00:00 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/22 15:27:41 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:49:26 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,13 @@ int	stack_size(t_stack *stack)
 
 int	is_sorted(t_stack *a)
 {
-    if (!a || !a->next)
-        return (1); 
-
-    while (a->next)
-    {
-        if (a->data > a->next->data)
-            return (0);
-        a = a->next;
-    }
-    return (1);
+	if (!a || !a->next)
+		return (1);
+	while (a->next)
+	{
+		if (a->data > a->next->data)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }

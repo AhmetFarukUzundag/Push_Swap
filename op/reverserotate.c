@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   reverserotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/23 23:50:40 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:53:38 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Son node başa gelir.
 void	rra(t_stack **a, t_bench *bench, int print_on)
 {
 	t_stack	*current;
@@ -34,7 +33,7 @@ void	rra(t_stack **a, t_bench *bench, int print_on)
 	last->next = *a;
 	*a = last;
 	if (print_on)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	if (bench)
 	{
 		bench->rra++;
@@ -63,7 +62,7 @@ void	rrb(t_stack **b, t_bench *bench, int print_on)
 	last->next = *b;
 	*b = last;
 	if (print_on)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	if (bench)
 	{
 		bench->rrb++;
@@ -73,13 +72,13 @@ void	rrb(t_stack **b, t_bench *bench, int print_on)
 
 void	rrr(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 {
-	rra(a, bench,print_on);
-	rrb(b, bench,print_on);
-if (print_on)
-	write(1, "rrr\n", 3);
-if (bench)
-{
-	bench->rrr++;
-	bench->total++;
-}
+	rra(a, bench, print_on);
+	rrb(b, bench, print_on);
+	if (print_on)
+		write(1, "rrr\n", 4);
+	if (bench)
+	{
+		bench->rrr++;
+		bench->total++;
+	}
 }

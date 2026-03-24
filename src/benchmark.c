@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haydinog <haydinog@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 21:18:32 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/23 23:48:00 by haydinog         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:21:34 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	putnbr(long n)
 
 	if (n < 0)
 	{
-		write(2, "-", 1); 
+		write(2, "-", 1);
 		n = -n;
 	}
 	if (n >= 10)
@@ -55,12 +55,10 @@ static void	putendl(char *s)
 	write(2, "\n", 1);
 }
 
-
-
 static void	put_percent(double d) // discorderi %49.00 seklinde basıyor
 {
-	int		full;
-	int		frac;
+	int full;
+	int frac;
 
 	full = (int)(d * 100);
 	frac = (int)(d * 10000) % 100;
@@ -71,7 +69,6 @@ static void	put_percent(double d) // discorderi %49.00 seklinde basıyor
 	putnbr(frac);
 	putstr("%");
 }
-
 
 static char	*get_strategy_name(t_strategy strategy)
 {
@@ -111,17 +108,28 @@ void	bench_print(t_config *cfg, t_bench *b)
 	putstr("[bench] total_op: ");
 	putnbr(b->total);
 	putendl("");
-    putstr("[bench] sa: "); putnbr(b->sa);
-	putstr(" sb: "); putnbr(b->sb);
-	putstr(" ss: "); putnbr(b->ss);
-	putstr(" pa: "); putnbr(b->pa);
-	putstr(" pb: "); putnbr(b->pb);
+	putstr("[bench] sa: ");
+	putnbr(b->sa);
+	putstr(" sb: ");
+	putnbr(b->sb);
+	putstr(" ss: ");
+	putnbr(b->ss);
+	putstr(" pa: ");
+	putnbr(b->pa);
+	putstr(" pb: ");
+	putnbr(b->pb);
 	putendl("");
-	putstr("[bench] ra: "); putnbr(b->ra);
-	putstr(" rb: "); putnbr(b->rb);
-	putstr(" rr: "); putnbr(b->rr);
-	putstr(" rra: "); putnbr(b->rra);
-	putstr(" rrb: "); putnbr(b->rrb);
-	putstr(" rrr: "); putnbr(b->rrr);
+	putstr("[bench] ra: ");
+	putnbr(b->ra);
+	putstr(" rb: ");
+	putnbr(b->rb);
+	putstr(" rr: ");
+	putnbr(b->rr);
+	putstr(" rra: ");
+	putnbr(b->rra);
+	putstr(" rrb: ");
+	putnbr(b->rrb);
+	putstr(" rrr: ");
+	putnbr(b->rrr);
 	putendl("");
 }

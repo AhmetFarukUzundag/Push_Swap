@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   adaptive.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/24 12:19:24 by auzundag          #+#    #+#             */
+/*   Updated: 2026/03/24 13:56:51 by auzundag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
-void    adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench, int print_on)
+void	adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench)
 {
-    cfg->disorder = compute_disorder(*a);
-
-    if (cfg->disorder < 0.2)
-        simple_sort(a, b, bench,print_on);
-    else if (cfg->disorder < 0.5)
-        medium_sort(a, b,bench,print_on);
-    else
-    {
-        normalize(*a);
-        radix_sort(a, b, bench,print_on);
-    }
+	cfg->disorder = compute_disorder(*a);
+	if (cfg->disorder < 0.2)
+		simple_sort(a, b, bench, cfg->print_on);
+	else if (cfg->disorder < 0.5)
+		medium_sort(a, b, bench, cfg->print_on);
+	else
+	{
+		normalize(*a);
+		radix_sort(a, b, bench, cfg->print_on);
+	}
 }

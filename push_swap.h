@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
+/*   Updated: 2026/03/24 13:58:53 by auzundag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -13,52 +25,53 @@ typedef struct s_stack
 
 typedef enum e_strategy
 {
-    STRAT_ADAPTIVE,
-    STRAT_SIMPLE,
-    STRAT_MEDIUM,
-    STRAT_COMPLEX
-}	t_strategy;
+	STRAT_ADAPTIVE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX
+}					t_strategy;
 
 typedef struct s_config
 {
-    t_strategy	strategy;
-    int			bench_enabled;
-    double		disorder;
-}	t_config;
+	t_strategy		strategy;
+	int				print_on;
+	int				bench_enabled;
+	double			disorder;
+}					t_config;
 
 typedef struct s_bench
 {
-	size_t	total;
-	size_t	sa;
-	size_t	sb;
-	size_t	ss;
-	size_t	pa;
-	size_t	pb;
-	size_t	ra;
-	size_t	rb;
-	size_t	rr;
-	size_t	rra;
-	size_t	rrb;
-	size_t	rrr;
-}	t_bench;
+	size_t			total;
+	size_t			sa;
+	size_t			sb;
+	size_t			ss;
+	size_t			pa;
+	size_t			pb;
+	size_t			ra;
+	size_t			rb;
+	size_t			rr;
+	size_t			rra;
+	size_t			rrb;
+	size_t			rrr;
+}					t_bench;
 
 t_stack				*new_node(int data);
 
 void				add_stack_back(t_stack **lst, t_stack *new);
 void				free_stack(t_stack **stack);
-void				sa(t_stack **a, t_bench *bench,int print_on);
-void				sb(t_stack **b, t_bench *bench,int print_on);
-void				ss(t_stack **a, t_stack **b, t_bench *bench,int print_on);
+void				sa(t_stack **a, t_bench *bench, int print_on);
+void				sb(t_stack **b, t_bench *bench, int print_on);
+void				ss(t_stack **a, t_stack **b, t_bench *bench, int print_on);
 void				pa(t_stack **a, t_stack **b, t_bench *bench, int print_on);
 void				pb(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void 				ra(t_stack **a, t_bench *bench,int print_on);
-void 				rb(t_stack **b, t_bench *bench,int print_on);
-void 				rr(t_stack **a, t_stack **b, t_bench *bench,int print_on);
-void				rra(t_stack **a, t_bench *bench,int print_on);
-void				rrb(t_stack **b, t_bench *bench,int print_on);
-void				rrr(t_stack **a, t_stack **b, t_bench *bench,int print_on);
+void				ra(t_stack **a, t_bench *bench, int print_on);
+void				rb(t_stack **b, t_bench *bench, int print_on);
+void				rr(t_stack **a, t_stack **b, t_bench *bench, int print_on);
+void				rra(t_stack **a, t_bench *bench, int print_on);
+void				rrb(t_stack **b, t_bench *bench, int print_on);
+void				rrr(t_stack **a, t_stack **b, t_bench *bench, int print_on);
 
-int	                ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					is_sorted(t_stack *a);
 char				**ft_split(char const *s, char c);
 long				ft_atol(const char *str, int *error);
@@ -66,16 +79,20 @@ int					parser_arguments(int argc, char **argv, t_stack **a);
 int					stack_size(t_stack *a);
 double				compute_disorder(t_stack *a);
 void				index_compression(t_stack **a);
-int	                parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx);
+int					parse_flags(int argc, char **argv, t_config *cfg,
+						int *first_num_idx);
 
-// algoritmalar
-void				simple_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
+void				simple_sort(t_stack **a, t_stack **b, t_bench *bench,
+						int print_on);
 void				sort_two(t_stack **a, t_bench *bench, int print_on);
 void				sort_three(t_stack **a, t_bench *bench, int print_on);
-void				medium_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void				radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void 				normalize(t_stack *a);
-void                adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench, int print_on);
+void				medium_sort(t_stack **a, t_stack **b, t_bench *bench,
+						int print_on);
+void				radix_sort(t_stack **a, t_stack **b, t_bench *bench,
+						int print_on);
+void				normalize(t_stack *a);
+void				adaptive_sort(t_stack **a, t_stack **b, t_config *cfg,
+						t_bench *bench);
 void				bench_print(t_config *cfg, t_bench *b);
 void				bench_init(t_bench *b);
 
