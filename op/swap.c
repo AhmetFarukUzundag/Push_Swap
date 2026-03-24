@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:12 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 13:53:54 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:09:53 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	swap(t_stack **stack)
 	*stack = second;
 }
 
-void	sa(t_stack **a, t_bench *bench, int print_on)
+void	sa(t_stack **a, t_bench *bench, t_config *cfg)
 {
 	swap(a);
-	if (print_on)
+	if (cfg && cfg->print_on)
 		write(1, "sa\n", 3);
 	if (bench)
 	{
@@ -38,10 +38,10 @@ void	sa(t_stack **a, t_bench *bench, int print_on)
 	}
 }
 
-void	sb(t_stack **b, t_bench *bench, int print_on)
+void	sb(t_stack **b, t_bench *bench, t_config *cfg)
 {
 	swap(b);
-	if (print_on)
+	if (cfg && cfg->print_on)
 		write(1, "sb\n", 3);
 	if (bench)
 	{
@@ -50,11 +50,11 @@ void	sb(t_stack **b, t_bench *bench, int print_on)
 	}
 }
 
-void	ss(t_stack **a, t_stack **b, t_bench *bench, int print_on)
+void	ss(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	swap(a);
 	swap(b);
-	if (print_on)
+	if (cfg && cfg->print_on)
 		write(1, "ss\n", 3);
 	if (bench)
 	{

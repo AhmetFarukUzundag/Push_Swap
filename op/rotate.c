@@ -6,13 +6,13 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:18 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 13:53:50 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:10:10 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack **a, t_bench *bench, int print_on)
+void	ra(t_stack **a, t_bench *bench, t_config *cfg)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -28,7 +28,7 @@ void	ra(t_stack **a, t_bench *bench, int print_on)
 		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	if (print_on)
+	if (cfg && cfg->print_on)
 		write(1, "ra\n", 3);
 	if (bench)
 	{
@@ -37,7 +37,7 @@ void	ra(t_stack **a, t_bench *bench, int print_on)
 	}
 }
 
-void	rb(t_stack **b, t_bench *bench, int print_on)
+void	rb(t_stack **b, t_bench *bench, t_config *cfg)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -53,7 +53,7 @@ void	rb(t_stack **b, t_bench *bench, int print_on)
 		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	if (print_on)
+	if (cfg && cfg->print_on)
 		write(1, "rb\n", 3);
 	if (bench)
 	{
@@ -62,11 +62,11 @@ void	rb(t_stack **b, t_bench *bench, int print_on)
 	}
 }
 
-void	rr(t_stack **a, t_stack **b, t_bench *bench, int print_on)
+void	rr(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
-	ra(a, bench, print_on);
-	rb(b, bench, print_on);
-	if (print_on)
+	ra(a, bench, cfg);
+	rb(b, bench, cfg);
+	if (cfg && cfg->print_on)
 		write(1, "rr\n", 3);
 	if (bench)
 	{

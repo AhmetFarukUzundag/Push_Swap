@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 13:58:53 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:16:07 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_config
 	int				print_on;
 	int				bench_enabled;
 	double			disorder;
+	int				chunk_size;
 }					t_config;
 
 typedef struct s_bench
@@ -59,17 +60,18 @@ t_stack				*new_node(int data);
 
 void				add_stack_back(t_stack **lst, t_stack *new);
 void				free_stack(t_stack **stack);
-void				sa(t_stack **a, t_bench *bench, int print_on);
-void				sb(t_stack **b, t_bench *bench, int print_on);
-void				ss(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void				pa(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void				pb(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void				ra(t_stack **a, t_bench *bench, int print_on);
-void				rb(t_stack **b, t_bench *bench, int print_on);
-void				rr(t_stack **a, t_stack **b, t_bench *bench, int print_on);
-void				rra(t_stack **a, t_bench *bench, int print_on);
-void				rrb(t_stack **b, t_bench *bench, int print_on);
-void				rrr(t_stack **a, t_stack **b, t_bench *bench, int print_on);
+void				sa(t_stack **a, t_bench *bench, t_config *cfg);
+void				sb(t_stack **b, t_bench *bench, t_config *cfg);
+void				ss(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg);
+void				pa(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg);
+void				pb(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg);
+void				ra(t_stack **a, t_bench *bench, t_config *cfg);
+void				rb(t_stack **b, t_bench *bench, t_config *cfg);
+void				rr(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg);
+void				rra(t_stack **a, t_bench *bench, t_config *cfg);
+void				rrb(t_stack **b, t_bench *bench, t_config *cfg);
+void				rrr(t_stack **a, t_stack **b, t_bench *bench,
+						t_config *cfg);
 
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					is_sorted(t_stack *a);
@@ -83,13 +85,13 @@ int					parse_flags(int argc, char **argv, t_config *cfg,
 						int *first_num_idx);
 
 void				simple_sort(t_stack **a, t_stack **b, t_bench *bench,
-						int print_on);
-void				sort_two(t_stack **a, t_bench *bench, int print_on);
-void				sort_three(t_stack **a, t_bench *bench, int print_on);
+						t_config *cfg);
+void				sort_two(t_stack **a, t_bench *bench, t_config *cfg);
+void				sort_three(t_stack **a, t_bench *bench, t_config *cfg);
 void				medium_sort(t_stack **a, t_stack **b, t_bench *bench,
-						int print_on);
+						t_config *cfg);
 void				radix_sort(t_stack **a, t_stack **b, t_bench *bench,
-						int print_on);
+						t_config *cfg);
 void				normalize(t_stack *a);
 void				adaptive_sort(t_stack **a, t_stack **b, t_config *cfg,
 						t_bench *bench);

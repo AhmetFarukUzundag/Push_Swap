@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 10:27:54 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/24 13:50:13 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:11:22 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	how_many_bits(t_stack **a)
 	return (bits);
 }
 
-void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
+void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	int	size_a;
 	int	max_bits;
@@ -55,7 +55,10 @@ void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 	max_bits = how_many_bits(a);
 	size_a = stack_size(*a);
 	if (size_a == 3)
-		return (sort_three(a, bench, print_on));
+	{
+		sort_three(a, bench, cfg);
+		return ;
+	}
 	i = 0;
 	while (i < max_bits)
 	{
@@ -63,13 +66,13 @@ void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 		while (j < size_a)
 		{
 			if (((*a)->index >> i) & 1)
-				ra(a, bench, print_on);
+				ra(a, bench, cfg);
 			else
-				pb(a, b, bench, print_on);
+				pb(a, b, bench, cfg);
 			j++;
 		}
 		while (*b)
-			pa(a, b, bench, print_on);
+			pa(a, b, bench, cfg);
 		i++;
 	}
 }

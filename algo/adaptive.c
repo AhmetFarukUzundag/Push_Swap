@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 12:19:24 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 13:56:51 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:11:22 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	adaptive_sort(t_stack **a, t_stack **b, t_config *cfg, t_bench *bench)
 {
 	cfg->disorder = compute_disorder(*a);
 	if (cfg->disorder < 0.2)
-		simple_sort(a, b, bench, cfg->print_on);
+		simple_sort(a, b, bench, cfg);
 	else if (cfg->disorder < 0.5)
-		medium_sort(a, b, bench, cfg->print_on);
+		medium_sort(a, b, bench, cfg);
 	else
 	{
 		normalize(*a);
-		radix_sort(a, b, bench, cfg->print_on);
+		radix_sort(a, b, bench, cfg);
 	}
 }

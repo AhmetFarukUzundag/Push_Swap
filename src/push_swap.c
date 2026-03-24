@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:01:12 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:11:22 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
 
 	cfg->strategy = STRAT_ADAPTIVE;
 	cfg->bench_enabled = 0;
+	strategy_seen = 0;
 	bench_seen = 0;
 	i = 1;
 	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
@@ -69,13 +70,13 @@ static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b,
 {
 	cfg->print_on = !cfg->bench_enabled;
 	if (cfg->strategy == STRAT_SIMPLE)
-		simple_sort(a, b, bench, cfg->print_on);
+		simple_sort(a, b, bench, cfg);
 	else if (cfg->strategy == STRAT_MEDIUM)
-		medium_sort(a, b, bench, cfg->print_on);
+		medium_sort(a, b, bench, cfg);
 	else if (cfg->strategy == STRAT_COMPLEX)
 	{
 		normalize(*a);
-		radix_sort(a, b, bench, cfg->print_on);
+		radix_sort(a, b, bench, cfg);
 	}
 	else
 		adaptive_sort(a, b, cfg, bench);

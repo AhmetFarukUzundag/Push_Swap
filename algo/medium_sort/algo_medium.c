@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 13:52:44 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:18:04 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_max_position(t_stack *stack)
 	return (max_pos);
 }
 
-void	rotate_to_top(t_stack **a, int pos, t_bench *bench, int print_on)
+void	rotate_to_top(t_stack **a, int pos, t_bench *bench, t_config *cfg)
 {
 	int	size;
 
@@ -44,13 +44,13 @@ void	rotate_to_top(t_stack **a, int pos, t_bench *bench, int print_on)
 	if (pos < size / 2)
 	{
 		while (pos--)
-			ra(a, bench, print_on);
+			ra(a, bench, cfg);
 	}
 	else
 	{
 		pos = size - pos;
 		while (pos--)
-			rra(a, bench, print_on);
+			rra(a, bench, cfg);
 	}
 }
 
@@ -73,32 +73,31 @@ int	find_nearest_chunk(t_stack *a, int range_max)
 	return (size);
 }
 
-void	push_chunks(t_stack **a, t_stack **b, int chunk_size, t_bench *bench,
-		int print_on)
+static void	push_chunks(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	int	range_max;
 	int	pushed;
 	int	pos;
 
-	range_max = chunk_size;
+	range_max = cfg->chunk_size;
 	pushed = 0;
 	while (*a)
 	{
 		pos = find_nearest_chunk(*a, range_max);
-		rotate_to_top(a, pos, bench, print_on);
-		pb(a, b, bench, print_on);
+		rotate_to_top(a, pos, bench, cfg);
+		pb(a, b, bench, cfg);
 		pushed++;
-		if ((*b)->index < range_max - (chunk_size / 2))
-			rb(b, bench, print_on);
-		if (pushed == chunk_size)
+		if ((*b)->index < range_max - (cfg->chunk_size / 2))
+			rb(b, bench, cfg);
+		if (pushed == cfg->chunk_size)
 		{
-			range_max += chunk_size;
+			range_max += cfg->chunk_size;
 			pushed = 0;
 		}
 	}
 }
 
-void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, int print_on)
+void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	int	max_pos;
 
@@ -108,36 +107,35 @@ void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, int print_on)
 		if (max_pos <= stack_size(*b) / 2)
 		{
 			while (max_pos--)
-				rb(b, bench, print_on);
+				rb(b, bench, cfg);
 		}
 		else
 		{
 			max_pos = stack_size(*b) - max_pos;
 			while (max_pos--)
-				rrb(b, bench, print_on);
+				rrb(b, bench, cfg);
 		}
-		pa(a, b, bench, print_on);
+		pa(a, b, bench, cfg);
 	}
 }
 
-void	medium_sort(t_stack **a, t_stack **b, t_bench *bench, int print_on)
+void	medium_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	int	size;
 	int	chunk_count;
-	int	chunk_size;
 
 	index_compression(a);
 	size = stack_size(*a);
 	if (size == 3)
 	{
-		sort_three(a, bench, print_on);
+		sort_three(a, bench, cfg);
 		return ;
 	}
 	if (size <= 100)
 		chunk_count = 5;
 	else
 		chunk_count = 11;
-	chunk_size = size / chunk_count;
-	push_chunks(a, b, chunk_size, bench, print_on);
-	push_back_to_a(a, b, bench, print_on);
+	cfg->chunk_size = size / chunk_count;
+	push_chunks(a, b, bench, cfg);
+	push_back_to_a(a, b, bench, cfg);
 }
