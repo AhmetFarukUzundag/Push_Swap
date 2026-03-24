@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:28 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:10:15 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:02:23 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	pb(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 
 	if (!a || !*a || !b)
 		return ;
+	(void)cfg;
 	temp = *a;
 	*a = (*a)->next;
 	temp->next = *b;
 	*b = temp;
-	if (cfg && cfg->print_on)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 	if (bench)
 	{
 		bench->pb++;
@@ -37,12 +37,12 @@ void	pa(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 
 	if (!a || !b || !*b)
 		return ;
+	(void)cfg;
 	temp = *b;
 	*b = (*b)->next;
 	temp->next = *a;
 	*a = temp;
-	if (cfg && cfg->print_on)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 	if (bench)
 	{
 		bench->pa++;

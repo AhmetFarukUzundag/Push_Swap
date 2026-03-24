@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 14:10:10 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:02:20 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	rra(t_stack **a, t_bench *bench, t_config *cfg)
 
 	if (!a || !*a || !(*a)->next)
 		return ;
+	(void)cfg;
 	current = *a;
 	prev = NULL;
 	while (current->next)
@@ -32,8 +33,7 @@ void	rra(t_stack **a, t_bench *bench, t_config *cfg)
 	prev->next = NULL;
 	last->next = *a;
 	*a = last;
-	if (cfg && cfg->print_on)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 	if (bench)
 	{
 		bench->rra++;
@@ -49,6 +49,7 @@ void	rrb(t_stack **b, t_bench *bench, t_config *cfg)
 
 	if (!b || !*b || !(*b)->next)
 		return ;
+	(void)cfg;
 	current = *b;
 	prev = NULL;
 	while (current->next)
@@ -61,8 +62,7 @@ void	rrb(t_stack **b, t_bench *bench, t_config *cfg)
 	prev->next = NULL;
 	last->next = *b;
 	*b = last;
-	if (cfg && cfg->print_on)
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 	if (bench)
 	{
 		bench->rrb++;
@@ -74,8 +74,8 @@ void	rrr(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	rra(a, bench, cfg);
 	rrb(b, bench, cfg);
-	if (cfg && cfg->print_on)
-		write(1, "rrr\n", 4);
+	(void)cfg;
+	write(1, "rrr\n", 4);
 	if (bench)
 	{
 		bench->rrr++;
