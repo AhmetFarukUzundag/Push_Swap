@@ -97,7 +97,7 @@ static void	push_chunks(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 	}
 }
 
-void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
+static void	push_back_to_a(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 {
 	int	max_pos;
 

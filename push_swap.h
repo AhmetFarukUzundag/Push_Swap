@@ -83,6 +83,11 @@ double				compute_disorder(t_stack *a);
 void				index_compression(t_stack **a);
 int					parse_flags(int argc, char **argv, t_config *cfg,
 						int *first_num_idx);
+void				putstr(char *s);
+void				putnbr(long n);
+void				putendl(char *s);
+void				bench_init(t_bench *b);
+void				put_percent(double d);
 
 void				simple_sort(t_stack **a, t_stack **b, t_bench *bench,
 						t_config *cfg);

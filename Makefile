@@ -13,6 +13,7 @@ SRC		= src/disorder.c \
 		  src/stack_utils.c \
 		  src/benchmark.c \
 		  src/ft_strncmp.c \
+		  src/benchmark_utils.c\
 		  op/push.c \
 		  op/reverserotate.c \
 		  op/rotate.c \
