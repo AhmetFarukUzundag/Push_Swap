@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 17:29:46 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/25 18:27:12 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef enum e_strategy
 typedef struct s_config
 {
 	t_strategy		strategy;
-	int				print_on;
 	int				bench_enabled;
 	double			disorder;
 	int				size;
@@ -81,7 +80,7 @@ long				ft_atol(const char *str, int *error);
 int					parser_arguments(int argc, char **argv, t_stack **a);
 int					stack_size(t_stack *a);
 double				compute_disorder(t_stack *a);
-void				index_compression(t_stack **a);
+void				index_compression(t_stack **a, int size);
 int					parse_flags(int argc, char **argv, t_config *cfg,
 						int *first_num_idx);
 void				putstr(char *s);
@@ -103,5 +102,10 @@ void				adaptive_sort(t_stack **a, t_stack **b, t_config *cfg,
 						t_bench *bench);
 void				bench_print(t_config *cfg, t_bench *b);
 void				bench_init(t_bench *b);
+
+void				push_back_to_a(t_stack **a, t_stack **b, t_bench *bench,
+						t_config *cfg);
+
+int					find_max_position(t_stack *stack);
 
 #endif

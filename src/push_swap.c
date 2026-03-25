@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 17:33:23 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/25 18:28:21 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	parse_flags(int argc, char **argv, t_config *cfg, int *first_num_idx)
 static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b,
 		t_bench *bench)
 {
-	cfg->print_on = !cfg->bench_enabled;
 	cfg->size = stack_size(*a);
 	if (cfg->strategy == STRAT_SIMPLE)
 		simple_sort(a, b, bench, cfg);
@@ -82,7 +81,6 @@ static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b,
 	else
 		adaptive_sort(a, b, cfg, bench);
 }
-
 int	main(int argc, char **argv)
 {
 	t_stack		*a;

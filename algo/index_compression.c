@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 13:20:50 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 16:54:58 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:44:28 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ static int	find_index(int *arr, int size, int value)
 	return (-1);
 }
 
-void	index_compression(t_stack **a)
+void	index_compression(t_stack **a, int size)
 {
 	t_stack	*curr;
-	int		buf[stack_size(*a)];
+	int		*buf;
 	int		i;
-	int		size;
 
-	size = stack_size(*a);
+	buf = malloc(sizeof(int) * size);
+	if (!buf)
+		return ;
 	curr = *a;
 	i = 0;
 	while (curr)
@@ -72,4 +73,5 @@ void	index_compression(t_stack **a)
 		curr->index = find_index(buf, size, curr->data);
 		curr = curr->next;
 	}
+	free(buf);
 }

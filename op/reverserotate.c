@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 09:50:23 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 18:02:20 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/25 18:29:59 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	rrr(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 	rra(a, bench, cfg);
 	rrb(b, bench, cfg);
 	(void)cfg;
-	write(1, "rrr\n", 4);
 	if (bench)
 	{
 		bench->rrr++;
 		bench->total++;
 	}
+	write(1, "rrr\n", 4);
 }

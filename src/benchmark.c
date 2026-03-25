@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 21:18:32 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/24 17:56:42 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:49:39 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,15 @@ static char	*get_complexity(t_strategy strategy, double disorder, int size)
 	if (size <= 5)
 		return ("O(n^2)");
 	if (size <= 100)
-		return (disorder < 0.3 ? "O(n^2)" : "O(n√n)");
-	return (disorder < 0.5 ? "O(n√n)" : "O(n log n)");
+	{
+		if (disorder < 0.3)
+			return ("O(n^2)");
+		else
+			return ("O(n√n)");
+	}
+	if (disorder < 0.5)
+		return ("O(n√n)");
+	return ("O(n log n)");
 }
 
 static void	print_ops1(t_bench *b)
