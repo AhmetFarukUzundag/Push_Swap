@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/26 15:45:55 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:17:38 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ void	simple_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 	size = stack_size(*a);
 	while (size > 0)
 	{
-		if (size == 3 && cfg->strategy != STRAT_SIMPLE)
+		if (size == 3)
 		{
 			sort_three(a, bench, cfg);
 			break ;
 		}
-		if (size == 2 && cfg->strategy != STRAT_SIMPLE)
+		else if (size == 5)
 		{
-			sort_two(a, bench, cfg);
+			sort_five(a, b, bench, cfg);
 			break ;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 08:22:06 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/26 15:44:26 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:15:44 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	medium_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 		return (sort_three(a, bench, cfg));
 	else if (size == 5)
 		return (sort_five(a, b, bench, cfg));
-	if (size == 3 && cfg->strategy != STRAT_MEDIUM)
-		sort_three(a, bench, cfg);
 	index_compression(a, size);
 	if (size <= 100)
 		chunk_count = 5;

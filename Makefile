@@ -5,27 +5,27 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 IFLAGS	= -I.
 
-SRC		= src/disorder.c \
-		  src/ft_atol.c \
-		  src/ft_split.c \
-		  src/parser.c \
-		  src/push_swap.c \
-		  src/stack_utils.c \
-		  src/benchmark.c \
-		  src/ft_strncmp.c \
-		  src/benchmark_utils.c\
-		  op/push.c \
-		  op/reverserotate.c \
-		  op/rotate.c \
-		  op/swap.c \
-		  algo/simple_sort/algo_simple.c \
-		  algo/simple_sort/sort_one_three_five.c \
-		  algo/medium_sort/algo_medium.c \
-		  algo/medium_sort/medium_utils.c \
-		  algo/index_compression.c \
-		  algo/adaptive.c \
-		  algo/complex_sort/algo_complex.c \
-		  algo/complex_sort/complex_index.c \
+SRC		= disorder.c \
+		  ft_atol.c \
+		  ft_split.c \
+		  parser.c \
+		  push_swap.c \
+		  stack_utils.c \
+		  benchmark.c \
+		  ft_strncmp.c \
+		  benchmark_utils.c\
+		  push.c \
+		  reverserotate.c \
+		  rotate.c \
+		  swap.c \
+		  algo_simple.c \
+		  sort_one_three_five.c \
+		  algo_medium.c \
+		  medium_utils.c \
+		  index_compression.c \
+		  adaptive.c \
+		  algo_complex.c \
+		  complex_index.c 
 		  
 
 OBJ		= $(SRC:.c=.o)

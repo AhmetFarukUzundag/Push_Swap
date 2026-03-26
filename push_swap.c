@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/26 11:45:32 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:02:29 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	cfg.size = stack_size(a);
 	cfg.disorder = compute_disorder(a);
 	if (is_sorted(a))
-		return (free_stack(&a), 0);
+		return (bench_print(&cfg, &bench), free_stack(&a), 0);
 	strategy_selector(&cfg, &a, &b, &bench);
 	if (cfg.bench_enabled)
 		bench_print(&cfg, &bench);
