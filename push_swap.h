@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/26 15:29:01 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:40:18 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void				normalize(t_stack *a);
 void				adaptive_sort(t_stack **a, t_stack **b, t_config *cfg,
 						t_bench *bench);
 void				bench_print(t_config *cfg, t_bench *b);
-void				bench_init(t_bench *b);
 
 void				push_back_to_a(t_stack **a, t_stack **b, t_bench *bench,
 						t_config *cfg);
