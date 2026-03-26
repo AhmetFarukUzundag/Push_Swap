@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 08:59:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/25 18:28:21 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 11:45:32 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static void	strategy_selector(t_config *cfg, t_stack **a, t_stack **b,
 	else
 		adaptive_sort(a, b, cfg, bench);
 }
+
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
