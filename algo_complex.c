@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 10:27:54 by haydinog          #+#    #+#             */
-/*   Updated: 2026/03/26 15:29:18 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:34:56 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,18 @@ void	radix_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 		return (sort_three(a, bench, cfg));
 	else if (size_a == 5)
 		return (sort_five(a, b, bench, cfg));
-	i = 0;
-	while (i < max_bits)
+	i = -1;
+	while (++i < max_bits)
 	{
-		j = 0;
-		while (j < size_a)
+		j = -1;
+		while (++j < size_a)
 		{
 			if (((*a)->index >> i) & 1)
 				ra(a, bench, cfg);
 			else
 				pb(a, b, bench, cfg);
-			j++;
 		}
 		while (*b)
 			pa(a, b, bench, cfg);
-		i++;
 	}
 }
