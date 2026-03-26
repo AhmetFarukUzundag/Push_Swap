@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 15:50:16 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/24 17:39:43 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 15:45:55 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	find_min(t_stack *a)
 	return (min);
 }
 
-static int	min_position(t_stack *a)
+static int	min_position_simple(t_stack *a)
 {
 	int	min;
 	int	position;
@@ -48,14 +48,14 @@ static int	min_position(t_stack *a)
 	return (position);
 }
 
-static void	min_to_top(t_stack **a, t_bench *bench, t_config *cfg)
+static void	min_to_top_simple(t_stack **a, t_bench *bench, t_config *cfg)
 {
 	int	position;
 	int	move_size;
 	int	reverse_move;
 
 	move_size = stack_size(*a) / 2;
-	position = min_position(*a);
+	position = min_position_simple(*a);
 	if (position <= move_size)
 	{
 		while (position > 0)
@@ -94,7 +94,7 @@ void	simple_sort(t_stack **a, t_stack **b, t_bench *bench, t_config *cfg)
 		}
 		else
 		{
-			min_to_top(a, bench, cfg);
+			min_to_top_simple(a, bench, cfg);
 			pb(a, b, bench, cfg);
 			size--;
 		}

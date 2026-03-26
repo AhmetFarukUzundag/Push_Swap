@@ -6,7 +6,7 @@
 /*   By: auzundag <auzundag@student.42istanbul.com.tr  + +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:57:29 by auzundag          #+#    #+#             */
-/*   Updated: 2026/03/25 18:27:12 by auzundag         ###   ########.fr       */
+/*   Updated: 2026/03/26 15:29:01 by auzundag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,9 @@ void				push_back_to_a(t_stack **a, t_stack **b, t_bench *bench,
 						t_config *cfg);
 
 int					find_max_position(t_stack *stack);
+void				min_to_top(t_stack **a, t_bench *bench, t_config *cfg);
+int					min_position(t_stack *a);
+void				sort_five(t_stack **a, t_stack **b, t_bench *bench,
+						t_config *cfg);
 
 #endif
