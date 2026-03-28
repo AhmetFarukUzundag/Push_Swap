@@ -3,51 +3,62 @@ DEBUG	= Outdebug
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-IFLAGS	= -I.
+IFLAGS	= -Iinclude
 
-SRC		= disorder.c \
-		  ft_atol.c \
-		  ft_split.c \
-		  parser.c \
-		  push_swap.c \
-		  stack_utils.c \
-		  benchmark.c \
-		  ft_strncmp.c \
-		  benchmark_utils.c\
-		  push.c \
-		  reverserotate.c \
-		  rotate.c \
-		  swap.c \
-		  algo_simple.c \
-		  sort_one_three_five.c \
-		  algo_medium.c \
-		  medium_utils.c \
-		  index_compression.c \
-		  adaptive.c \
-		  algo_complex.c \
-		  complex_index.c 
-		  
+SRC_DIR	= src
+OBJ_DIR	= obj
 
-OBJ		= $(SRC:.c=.o)
+SRC_FILES	= \
+	push_swap.c \
+	algo/adaptive.c \
+	algo/algo_complex.c \
+	algo/algo_medium.c \
+	algo/algo_simple.c \
+	algo/complex_index.c \
+	algo/disorder.c \
+	algo/medium_utils.c \
+	algo/sort_one_three_five.c \
+	ops/push.c \
+	ops/reverserotate.c \
+	ops/rotate.c \
+	ops/stack_utils.c \
+	ops/swap.c \
+	parse/ft_atol.c \
+	parse/ft_split.c \
+	parse/ft_strncmp.c \
+	parse/index_compression.c \
+	parse/parser.c \
+	bench/benchmark.c \
+	bench/benchmark_utils.c
+
+SRC		= $(addprefix $(SRC_DIR)/,$(SRC_FILES))
+OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR) 2>NUL || true
+	@mkdir $(OBJ_DIR)/algo 2>NUL || true
+	@mkdir $(OBJ_DIR)/ops 2>NUL || true
+	@mkdir $(OBJ_DIR)/parse 2>NUL || true
+	@mkdir $(OBJ_DIR)/bench 2>NUL || true
+
+$(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 debug: CFLAGS += -g -O0
-debug: $(OBJ)
+debug: $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(DEBUG)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(DEBUG)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
