@@ -37,11 +37,10 @@ OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
 all: $(NAME)
 
 $(OBJ_DIR):
-	@mkdir $(OBJ_DIR) 2>NUL || true
-	@mkdir $(OBJ_DIR)/algo 2>NUL || true
-	@mkdir $(OBJ_DIR)/ops 2>NUL || true
-	@mkdir $(OBJ_DIR)/parse 2>NUL || true
-	@mkdir $(OBJ_DIR)/bench 2>NUL || true
+	@mkdir -p $(OBJ_DIR)/algo
+	@mkdir -p $(OBJ_DIR)/ops
+	@mkdir -p $(OBJ_DIR)/parse
+	@mkdir -p $(OBJ_DIR)/bench
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
